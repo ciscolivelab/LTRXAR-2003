@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#multi-region-fabric-mrf-overview" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -313,9 +318,45 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          About The Lab
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         About The Lab
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#multi-region-fabric-mrf-overview" class="md-nav__link">
+    Multi-Region Fabric (MRF) Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-lab" class="md-nav__link">
+    About This Lab
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -481,6 +522,28 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#multi-region-fabric-mrf-overview" class="md-nav__link">
+    Multi-Region Fabric (MRF) Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-lab" class="md-nav__link">
+    About This Lab
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -496,7 +559,43 @@
 
   <h1>About The Lab</h1>
 
-
+<h2 id="multi-region-fabric-mrf-overview">Multi-Region Fabric (MRF) Overview</h2>
+<p>The current Catalyst SDWAN architecture follows a flat overlay model, establishing site-to-site tunnels directly between sites. While this flat overlay model functions adequately in many scenarios, it does have its limitations:  </p>
+<ul>
+<li>Centralized control policy is necessary for Hub and Spoke topology or setting route preferences. Depending on the specific requirements of the topology, this policy can become quite complex.  </li>
+<li>Integrating transports from disparate providers for the underlay can be challenging. This is particularly relevant when attempting to leverage middle mile providers or cloud backbone providers' networks for inter-region traffic.  </li>
+<li>Large enterprises and managed service providers (MSPs) often require SDWAN to extend across multiple regions.  </li>
+</ul>
+<p>Now, with Multi-Region Fabric (MRF), it offers following enhancements  </p>
+<ul>
+<li>Foundational capability that underpins our journey to multi-cloud and SDCI  <ul>
+<li>Ensure market-leading scalability  </li>
+<li>Service enablement at gateway points</li>
+<li>Increase network resiliency  </li>
+</ul>
+</li>
+<li>Improve OMP to support a true scalable Multi-Region Fabric SD-WAN  </li>
+<li>3-level customer overlay  <ul>
+<li>Introduces Regions  </li>
+<li>Primary Access Region  </li>
+<li>Secondary Region  </li>
+<li>Subregion  </li>
+<li>Border routers provide tunnel stitching  </li>
+<li>Inter Regions always goes via border routers  </li>
+</ul>
+</li>
+<li>End to end SLA aware path computation  </li>
+<li>Simplifies user-visible configuration  </li>
+</ul>
+<h2 id="about-this-lab">About This Lab</h2>
+<p>This lab has been designed to showcase a comprehensive array of MRF features provided by the Cisco SD-WAN solution in a systematic manner. While a predefined topology is outlined and associated with each scenario, the lab instructions can also be tailored to the specific requirements of attendees. Participants can utilize the steps outlined in this lab to transition their flat fabric into an MRF.  </p>
+<p>Upon completing this lab, you will:  </p>
+<ul>
+<li>Gain insight into the intricacies of using the legacy approach to create and deploy hierarchical topologies within a flat Catalyst SD-WAN Fabric.  </li>
+<li>Successfully migrate from a flat Catalyst SD-WAN fabric to an MRF fabric with minimal disruption.  </li>
+<li>Understand the streamlined process for deploying a hierarchical topology using MRF fabric.  </li>
+<li>Understand and deploy MRF features such as 2nd region, transit gateway and MRF policy.  </li>
+</ul>
 
 
 

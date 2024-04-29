@@ -497,9 +497,168 @@
   <h1>Task 1 - Explore Flat Fabric Policy</h1>
 
 <p>In this task you will understand the current active centralized policy that creates a Regional Hub &amp; Spoke topology.  </p>
-<p>**### Step 1: Review existing policy  </p>
-<p>Once you have the RDP session to the remote workstation, open <strong>Chrome</strong> browser icon on the desktop.<br />
- Put <strong>https://vmanage.dcloud.cisco.com:8443</strong> in browser address bar; login with username <strong>admin</strong>, password <strong>C1sco12345</strong>.  </p>
+<p><strong>### Step 1: Review existing policy</strong>  </p>
+<p>Once you have the RDP session to the remote workstation, open <strong>Chrome</strong> browser icon on the desktop.  </p>
+<p>Enter <strong>[https://vmanage.dcloud.cisco.com:8443]</strong>(https://vmanage.dcloud.cisco.com:8443) in browser address bar; login with username <strong>admin</strong>, password <strong>C1sco12345</strong>.  </p>
+<p>Click SD-WAN Manager navagination bar, go to <strong>Configuration &gt; Policies</strong>. Locate pre-configured policy <strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong>, click the <strong>...</strong> on the right and select <strong>Preview</strong>.  </p>
+<p><img alt="" src="../pic/task1-1.png" /></p>
+<p>This<strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong> policy adjusts the Control Plane to intercommunicate all sites within the West region in a full-mesh fashion but without direct connectivity to the East region, by denying TLOCs and using TLOC re-writes. For this we rely on the West Hub (Site 201) connectivity towards the East Hub (Site 202) through the BGP Core network using Service side VPN.  </p>
+<p><span style="background-color:yellow"> <strong>Note: Refer to the Regional Hub &amp; Spoke with BGP Core topology diagram for further analysis.</strong> </span>  </p>
+<p>As you can see it is a complex policy even for a very small environment with same two transports used everywhere.  </p>
+<div class="highlight"><pre><span></span><code>viptela-policy:policy
+ control-policy EAST-BRANCHES-SITES-CP
+    sequence 1
+     match tloc
+      site-list EAST-ALL-SITES
+     !
+     action accept
+     !
+    !
+    sequence 11
+     match route
+      site-list EAST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+     !
+    !
+    sequence 21
+     match route
+      site-list WEST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+      set
+       tloc-list EAST-HUB-TLOCS
+      !
+     !
+    !
+  default-action reject
+ !
+ control-policy BGP-CORE-EAST-HUB-CP
+    sequence 1
+     match tloc
+      site-list EAST-ALL-SITES
+     !
+     action accept
+     !
+    !
+    sequence 11
+     match route
+      site-list EAST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+     !
+    !
+  default-action reject
+ !
+ control-policy BGP-CORE-WEST-HUB-CP
+    sequence 1
+     match tloc
+      site-list WEST-ALL-SITES
+     !
+     action accept
+     !
+    !
+    sequence 11
+     match route
+      site-list WEST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+     !
+    !
+  default-action reject
+ !
+ control-policy WEST-BRANCHES-SITES-CP
+    sequence 1
+     match tloc
+      site-list WEST-ALL-SITES
+     !
+     action accept
+     !
+    !
+    sequence 11
+     match route
+      site-list WEST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+     !
+    !
+    sequence 21
+     match route
+      site-list EAST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+      set
+       tloc-list WEST-HUB-TLOCS
+      !
+     !
+    !
+  default-action reject
+ !
+ lists
+  site-list EAST-ALL-SITES
+   site-id 202 
+   site-id 6000-7000 
+  !
+  site-list EAST-BRANCHES
+   site-id 6000 
+   site-id 7000 
+  !
+  site-list EAST-HUB
+   site-id 202 
+  !
+  site-list WEST-ALL-SITES
+   site-id 201 
+   site-id 1010-1020 
+   site-id 3000-5000 
+  !
+  site-list WEST-BRANCHES
+   site-id 1010-1020 
+   site-id 3000 
+   site-id 4000 
+   site-id 5000 
+  !
+  site-list WEST-HUB
+   site-id 201 
+  !
+  tloc-list EAST-HUB-TLOCS
+   tloc 1.1.202.1 color public-internet encap ipsec 
+   tloc 1.1.202.1 color mpls encap ipsec 
+   tloc 1.1.202.2 color public-internet encap ipsec 
+   tloc 1.1.202.2 color mpls encap ipsec 
+  !
+  tloc-list WEST-HUB-TLOCS
+   tloc 1.1.201.1 color public-internet encap ipsec 
+   tloc 1.1.201.1 color mpls encap ipsec 
+   tloc 1.1.201.2 color public-internet encap ipsec 
+   tloc 1.1.201.2 color mpls encap ipsec 
+  !
+  prefix-list _AnyIpv4PrefixList
+   ip-prefix 0.0.0.0/0 le 32 
+  !
+ !
+!
+apply-policy
+ site-list WEST-BRANCHES
+  control-policy WEST-BRANCHES-SITES-CP out
+ !
+ site-list EAST-BRANCHES
+  control-policy EAST-BRANCHES-SITES-CP out
+ !
+ site-list EAST-HUB
+  control-policy BGP-CORE-EAST-HUB-CP out
+ !
+ site-list WEST-HUB
+  control-policy BGP-CORE-WEST-HUB-CP out
+ !
+!
+</code></pre></div>
+<p><strong>###Step 2: Review BFD Tunnels</strong>  </p>
 
 
 

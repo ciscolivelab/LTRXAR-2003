@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#step-2-review-bfd-tunnels" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -406,9 +411,38 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Task 1 - Explore Flat Fabric Policy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Task 1 - Explore Flat Fabric Policy
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-review-bfd-tunnels" class="md-nav__link">
+    Step 2: Review BFD Tunnels
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -481,6 +515,21 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-review-bfd-tunnels" class="md-nav__link">
+    Step 2: Review BFD Tunnels
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -497,7 +546,7 @@
   <h1>Task 1 - Explore Flat Fabric Policy</h1>
 
 <p>In this task you will understand the current active centralized policy that creates a Regional Hub &amp; Spoke topology.  </p>
-<p><strong>### Step 1: Review existing policy</strong>  </p>
+<p>### <strong>Step 1: Review existing policy</strong>  </p>
 <p>Once you have the RDP session to the remote workstation, open <strong>Chrome</strong> browser icon on the desktop.  </p>
 <p>Enter <strong><a href="https://vmanage.dcloud.cisco.com:8443">https://vmanage.dcloud.cisco.com:8443</a></strong> in browser address bar; login with username <strong>admin</strong>, password <strong>C1sco12345</strong>.  </p>
 <p>Click SD-WAN Manager navagination bar, go to <strong>Configuration &gt; Policies</strong>. Locate pre-configured policy <strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong>, click the <strong>...</strong> on the right and select <strong>Preview</strong>.  </p>
@@ -658,7 +707,7 @@ apply-policy
  !
 !
 </code></pre></div>
-<p><strong>###Step 2: Review BFD Tunnels</strong>  </p>
+<h3 id="step-2-review-bfd-tunnels"><strong>Step 2: Review BFD Tunnels</strong></h3>
 
 
 

@@ -499,7 +499,7 @@
 <p>In this task you will understand the current active centralized policy that creates a Regional Hub &amp; Spoke topology.  </p>
 <p><strong>### Step 1: Review existing policy</strong>  </p>
 <p>Once you have the RDP session to the remote workstation, open <strong>Chrome</strong> browser icon on the desktop.  </p>
-<p>Enter <strong>[https://vmanage.dcloud.cisco.com:8443]</strong>(https://vmanage.dcloud.cisco.com:8443) in browser address bar; login with username <strong>admin</strong>, password <strong>C1sco12345</strong>.  </p>
+<p>Enter <strong><a href="https://vmanage.dcloud.cisco.com:8443">https://vmanage.dcloud.cisco.com:8443</a></strong> in browser address bar; login with username <strong>admin</strong>, password <strong>C1sco12345</strong>.  </p>
 <p>Click SD-WAN Manager navagination bar, go to <strong>Configuration &gt; Policies</strong>. Locate pre-configured policy <strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong>, click the <strong>...</strong> on the right and select <strong>Preview</strong>.  </p>
 <p><img alt="" src="../pic/task1-1.png" /></p>
 <p>This<strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong> policy adjusts the Control Plane to intercommunicate all sites within the West region in a full-mesh fashion but without direct connectivity to the East region, by denying TLOCs and using TLOC re-writes. For this we rely on the West Hub (Site 201) connectivity towards the East Hub (Site 202) through the BGP Core network using Service side VPN.  </p>

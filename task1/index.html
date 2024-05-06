@@ -773,7 +773,7 @@ apply-policy
 <p><img alt="" src="../pic/task1-3-1.png" />  </p>
 <h3 id="step-4-review-path-between-spoke-sites"><strong>Step 4: Review Path between spoke sites</strong></h3>
 <p>Next, you'll run traceroute and ping to test reachability of ubuntu hosts between different branch sites.  </p>
-<p>Click <strong>mRemoteNG</strong> <img alt="" src="pic/task2-1.png = 10x10" title="mRemoteNG" />on your desktop, select <strong>Site-3000-VPN-10-Ubun</strong> and open RDP session to the host with username <strong>viptela</strong>, password<strong>C1sco12345</strong>. Run ping and traceroute to Ubuntu host in Site 6000 with IP <strong>10.60.1.101</strong>.   </p>
+<p>Click <strong>mRemoteNG</strong> <img alt="" src="pic/task2-1.png =10x10" title="mRemoteNG" />on your desktop, select <strong>Site-3000-VPN-10-Ubun</strong> and open RDP session to the host with username <strong>viptela</strong>, password<strong>C1sco12345</strong>. Run ping and traceroute to Ubuntu host in Site 6000 with IP <strong>10.60.1.101</strong>.   </p>
 <p><img alt="" src="../pic/task1-4-1.png" />  </p>
 <p>From the trace above, even though the site 3000 and site 6000 have the Public-Internet transport in common, they do not communicate directly to each other because the current active Control Policy, going through the Hubs and therefore the BGP Core squared with red color in the trace.</p>
 <p>Next, let's check the route table on West hub site <strong>BR-WEST-1</strong>. Go to the Manage GUI and then go to <strong>Monitor &gt; Devices &gt; BR-WEST-1 (1.1.201.1) &gt; Real Time</strong> and look up for IP route with the VPN 10 filter.  </p>

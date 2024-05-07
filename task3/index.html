@@ -571,6 +571,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-2-assign-feature-template-to-west-edge-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Assign Feature Template to West Edge Devices
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -641,6 +650,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-2-assign-feature-template-to-west-edge-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Assign Feature Template to West Edge Devices
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -661,7 +679,7 @@
 <p>In this task we are going to enable Migration Mode on all Edge devices in the West Region </p>
 <h3 id="step-1-create-new-systen-feature-template-for-west-edge-devices"><strong>Step 1: Create new Systen Feature Template for West Edge Devices</strong></h3>
 <p>Go to <strong>Configuration &gt; Templates &gt; Feature templates &gt; Add Template</strong>, select C8000v and Cisco System.</p>
-<p><img alt="" src="../pic/task3-1.png" /></p>
+<p><img alt="" src="../pic/task3-1-1.png" /></p>
 <p>Name it as <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and define only the next parameters as follows:</p>
 <ul>
 <li>Location: “Device Specific”</li>
@@ -671,7 +689,17 @@
 <li>Latitude: “Device Specific”</li>
 <li>Longitude: “Device Specific”</li>
 </ul>
-<p><span style="background-color:yellow"> <strong>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</strong> </span>  </p>
+<p><span style="background-color:yellow"> <strong>Note: Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</strong> </span>  </p>
+<p><img alt="" src="../pic/task3-1-2.png" /></p>
+<h3 id="step-2-assign-feature-template-to-west-edge-devices"><strong>Step 2: Assign Feature Template to West Edge Devices</strong></h3>
+<p>Assign the previous created System Feature template named <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> to all West sites and therefore to their proper Device Templates, being:</p>
+<ul>
+<li><strong>cEDGE_DC_DT</strong> </li>
+<li><strong>cEDGE_SITE-3000_DT</strong></li>
+<li><strong>cEDGE_SITE-4000_DT</strong></li>
+<li><strong>cEDGE_SITE-5000_DT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task3-1-3.png" /></p>
 
 
 

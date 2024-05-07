@@ -580,6 +580,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-3-validate-defaultflat-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Validate default/flat Controller
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -659,6 +668,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-3-validate-defaultflat-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Validate default/flat Controller
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -699,17 +717,21 @@
 <li><strong>cEDGE_SITE-4000_DT</strong></li>
 <li><strong>cEDGE_SITE-5000_DT</strong></li>
 </ul>
-<p><img alt="" src="../pic/task3-1-3.png" /></p>
+<p><img alt="" src="../pic/task3-2-1.png" /></p>
 <p>For simplicity let’s do it only for the <strong>cEDGE_DC_DT</strong> Device Template, however as mentioned you need to repeat it for all other West Sites mentioned above, so click on the 3 dots and then ‘edit’.</p>
-<p><img alt="" src="../pic/task3-1-4.png" /></p>
+<p><img alt="" src="../pic/task3-2-2.png" /></p>
 <p>Next in ‘Cisco System’ select the <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong>.</p>
-<p><img alt="" src="../pic/task3-1-5.png" /></p>
+<p><img alt="" src="../pic/task3-2-3.png" /></p>
 <p>Then click ‘Update’ and you should see the next screen with all 4 DC devices with a little green checkmark.</p>
-<p><img alt="" src="../pic/task3-1-6.png" /></p>
+<p><img alt="" src="../pic/task3-2-4.png" /></p>
 <p>Now, click ‘Next’ and should see the next configuration being applied to all 4 DC devices. </p>
-<p><img alt="" src="../pic/task3-1-7.png" /></p>
+<p><img alt="" src="../pic/task3-2-5.png" /></p>
 <p>Finally click ‘Configure Devices’ to push the new configuration.</p>
 <p><span style="background-color:yellow"> <strong>Note: Don’t forget to apply the same new feature template to cEDGE_SITE-3000_DT, cEDGE_SITE-4000_DT and cEDGE_SITE-5000_DT.</strong> </span>  </p>
+<h3 id="step-3-validate-defaultflat-controller"><strong>Step 3: Validate default/flat Controller</strong></h3>
+<p>Now in Manager UI, go to <strong>Monitor &gt; Devices &gt; EDGE-BRANCH-3-01 &gt; Real Time</strong> and look up for <strong>OMP Peers</strong> in the search bar.</p>
+<p>As you can see the <strong>EDGE-BRANCH-3-01</strong> has just 1 OMP peer, one with <strong>Controller-4 (1.1.1.6)</strong> that serves as default/flat Controller for the whole overlay. Pay special attention to the <strong>Region ID</strong> as ‘None’, as this will change in Task 7.</p>
+<p><img alt="" src="../pic/task3-3-1.png" /></p>
 
 
 

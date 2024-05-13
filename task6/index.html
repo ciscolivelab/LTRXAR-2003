@@ -524,6 +524,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-4-de-active-current-centralized-policy" class="md-nav__link">
+    Step 4: De-active current Centralized Policy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations-you-have-fully-migrated-your-overlay-from-a-regional-hub-spoke-using-control-policy-to-a-multi-region-fabric-without-control-policy" class="md-nav__link">
+    Congratulations, you have fully migrated your overlay from a Regional Hub &amp; Spoke using Control Policy to a Multi-Region Fabric without Control Policy.
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -608,6 +622,20 @@
         <li class="md-nav__item">
   <a href="#step-3-re-purpose-default-controller" class="md-nav__link">
     Step 3: Re-purpose default controller
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-de-active-current-centralized-policy" class="md-nav__link">
+    Step 4: De-active current Centralized Policy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations-you-have-fully-migrated-your-overlay-from-a-regional-hub-spoke-using-control-policy-to-a-multi-region-fabric-without-control-policy" class="md-nav__link">
+    Congratulations, you have fully migrated your overlay from a Regional Hub &amp; Spoke using Control Policy to a Multi-Region Fabric without Control Policy.
   </a>
   
 </li>
@@ -708,8 +736,50 @@
 <p>After disable migration mode on all border and Edge devices, the default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> is no longer peering with any device. In this step, you will re-purpose reposition this controller to the Core region for redundancy.<br />
 <strong>Note: This is optional task</strong>  </p>
 <ul>
-<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_BORDER-EAST-202_SYSTEM_FT</strong> and edit it.  </li>
+<li>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>, look up for the device template of controller for core region <strong>CONTROLLER-3_DT</strong> and <strong>Attach Devices</strong>.  </li>
 </ul>
+<p><img alt="" src="../pic/task6-3-1.png" />  </p>
+<ul>
+<li>Select <strong>Controller-4</strong> from <strong>Available Devices</strong> window move it to <strong>Selected Devices</strong> window, then click Attach. </li>
+</ul>
+<p><img alt="" src="../pic/task6-3-2.png" />  </p>
+<ul>
+<li><strong>Configure Devices</strong> to push the configuration. This moves Controller-4 to Core region.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-3-3.png" />  </p>
+<h3 id="step-4-de-active-current-centralized-policy"><strong>Step 4: De-active current Centralized Policy</strong></h3>
+<p>As MRF by default makes inte-region connections via core region, the centralized policy configured in flat fabric becomes unnecessary. Let's deactive the current centralized policy and remove the BGP core between borders.  </p>
+<p><strong>Note: In this lab, no service in the core region hence you will remove the service VPN and BGP in core region.</strong>  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Policies</strong> and deactivate the current active Centralized Policy <strong>OMP_CORE_TLOCS_POLICY</strong>  </li>
+<li>Click <strong>Deactivate</strong> and <strong>Deactivate</strong> once again.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-4-1.png" />  </p>
+<ul>
+<li>Shutdown on all Hubs the service VPN 10 interfaces that were used for the BGP core, this will cause now to use the Fabric we created at the Core with the Private1 TLOCs, therefore go to <strong>Configuration &gt; Templates &gt; Device Templates</strong> and look up for <strong>cEDGE_SITE-201_DT</strong> device template and now click on <strong>Change Device Values</strong>.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-4-2.png" />  </p>
+<ul>
+<li>Scroll to the right and mark the checkbox or click on the three dots to shut down the <strong>VPN-10_CHILD_IF-1</strong> interfaces on both Border Routers <strong>BR-WEST-1</strong> and <strong>BR-WEST-2</strong>.  </li>
+<li>Click Next and <strong>Configure Devices</strong>.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-4-3.png" />  </p>
+<ul>
+<li>
+<p>Repeat the same process for <strong>cEDGE_SITE-202_DT</strong> Device Template to shutdown VPN 10 interfaces on <strong>BR-EAST-1</strong> and <strong>BR-EAST-2</strong>.  </p>
+</li>
+<li>
+<p>Let's verify the connectivity between Site 3000 and Site 6000 from Ubuntu VM and check the path from traceroute.  </p>
+</li>
+<li>
+<p>Open <strong>mRemoteNG </strong> RDP to host <strong>Site-3000-VPN-10-Ubun</strong>. Ping and trace the Ubuntu host located in <strong>Site 6000</strong> with IP <strong>10.60.1.101</strong>  </p>
+</li>
+<li>
+<p>As we can see below, both are still reachable and the traffic is still going through the Fabric we created in the Core, but now without a such complex Control Policy.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task6-4-4.png" />  </p>
+<h3 id="congratulations-you-have-fully-migrated-your-overlay-from-a-regional-hub-spoke-using-control-policy-to-a-multi-region-fabric-without-control-policy"><strong>Congratulations, you have fully migrated your overlay from a Regional Hub &amp; Spoke using Control Policy to a Multi-Region Fabric without Control Policy.</strong></h3>
 
 
 

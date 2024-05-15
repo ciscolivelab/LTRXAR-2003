@@ -850,7 +850,9 @@
 <p><img alt="" src="../pic/task6-2-2.png" />  </p>
 <ul>
 <li>
-<p>Click <strong>Update</strong> to trigger the configuration change to disable the migration mode. </p>
+<ul>
+<li>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on both West Border routers.</li>
+</ul>
 </li>
 <li>
 <p>Repeat the same process to disable <strong>Migration Mode </strong>for East Border routers.  </p>
@@ -862,9 +864,13 @@
 <li>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the East Border router will keepthe OMP session to West Region aware <strong>controller-2 (1.1.1.4)</strong>, and the Core region <strong>Controller-3 (1.1.1.5)</strong>, but will remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </li>
 </ul>
 <p><img alt="" src="../pic/task6-2-4.png" />  </p>
-<p><em>Click </em><em>Update</em>* to trigger the configuration change to disable the migration mode. </p>
 <ul>
-<li>Repeat the same process to disable <strong>Migration Mode </strong>for West Edge routers.  </li>
+<li>
+<p>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on both East Border routers.</p>
+</li>
+<li>
+<p>Repeat the same process to disable <strong>Migration Mode </strong>for West Edge routers.  </p>
+</li>
 <li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and edit it.  </li>
 </ul>
 <p><img alt="" src="../pic/task6-2-5.png" />  </p>
@@ -874,7 +880,7 @@
 <p><img alt="" src="../pic/task6-2-6.png" />  </p>
 <ul>
 <li>
-<p>Click <strong>Update</strong> to trigger the configuration change to disable the migration mode.  </p>
+<p>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on all West Edge routers.   </p>
 </li>
 <li>
 <p>Repeat the same process to disable <strong>Migration Mode </strong>for East Edge routers.  </p>
@@ -887,7 +893,7 @@
 </ul>
 <p><img alt="" src="../pic/task6-2-8.png" />  </p>
 <ul>
-<li>Click <strong>Update</strong> to trigger the configuration change to disable the migration mode.  </li>
+<li>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on all East Edge routers.  </li>
 </ul>
 <h3 id="step-3-re-purpose-default-controller"><strong>Step 3: Re-purpose default controller</strong></h3>
 <p>After disable migration mode on all border and Edge devices, the default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> is no longer peering with any device. In this step, you will re-purpose reposition this controller to the Core region for redundancy.<br />

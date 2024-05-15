@@ -807,7 +807,7 @@
 <p>Click SD-WAN Manager navagination bar, go to <strong>Configuration &gt; Policies</strong>. Locate pre-configured policy <strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong>, click the <strong>...</strong> on the right and select <strong>Preview</strong>.  </p>
 </li>
 </ul>
-<p><img alt="" src="../pic/task1-1.png" /></p>
+<p><img alt="" src="../pic/task1-1-1.png" /></p>
 <ul>
 <li>This<strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong> policy adjusts the Control Plane to intercommunicate all sites within the West region in a full-mesh fashion but without direct connectivity to the East region, by denying TLOCs and using TLOC re-writes. For this we rely on the West Hub (Site 201) connectivity towards the East Hub (Site 202) through the BGP Core network using Service side VPN.  </li>
 </ul>
@@ -972,21 +972,23 @@ apply-policy
 <li>Navigate to the SD-WAN Manager navagination bar, then proceed to <strong>Monitor &gt; Device</strong>. Locate <strong>EDGE-BRANCH-3-01</strong>, click on the device and choose <strong>Real Time</strong> as show in the screenshot below.  </li>
 </ul>
 <p>In the <strong>Device Options</strong> field, enter <strong>OMP Received TLOCS</strong>. As you can see, there are no TLOCs now to any site in the East region and therefore no tunnels to them.  </p>
-<p><img alt="" src="../pic/task2-2.png" />  </p>
+<p><img alt="" src="../pic/task1-2-1.png" />  </p>
 <p>We can confirm this by looking for <strong>BFD Sessions</strong> in the Device Options field.<br />
 <strong>We don’t see East TLOC’s IPs like 1.1.60.1, 1.1.70.1, 1.1.202.1 or 1.1.202.2 nor BFD tunnels against their Site IDs 202,6000 and 7000</strong>  </p>
-<p><img alt="" src="../pic/task2-3.png" />  </p>
+<p><img alt="" src="../pic/task1-2-2.png" />  </p>
 <h3 id="step-3-review-ip-route"><strong>Step 3: Review IP Route</strong></h3>
 <p>Next, you'll examine the route tables from the spoke sites.  </p>
 <p>In the <strong>Device Options</strong> field, enter <strong>IP route</strong>. As you can see, even though it doesn't have tunnels towards the East sites, it has prefixes for such sites but pointing to the <strong>West Hubs (Site 201)</strong> TLOCs IPs instead of the originators.  </p>
-<p><img alt="" src="../pic/task1-3-1.png" />  </p>
+<p><img alt="" src="../pic/task1-3-1.png" />
+<img alt="" src="../pic/task1-3-2.png" />    </p>
 <h3 id="step-4-review-path-between-spoke-sites"><strong>Step 4: Review Path between spoke sites</strong></h3>
 <p>Next, you'll run traceroute and ping to test reachability of ubuntu hosts between different branch sites.  </p>
 <p>Click <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" /> on your desktop, select <strong>Site-3000-VPN-10-Ubun</strong> and open RDP session to the host with username <strong>viptela</strong>, password<strong>C1sco12345</strong>. Run ping and traceroute to Ubuntu host in Site 6000 with IP <strong>10.60.1.101</strong>.   </p>
 <p><img alt="" src="../pic/task1-4-1.png" />  </p>
 <p>From the trace above, even though the site 3000 and site 6000 have the Public-Internet transport in common, they do not communicate directly to each other because the current active Control Policy, going through the Hubs and therefore the BGP Core squared with red color in the trace.</p>
 <p>Next, let's check the route table on West hub site <strong>BR-WEST-1</strong>. Go to the Manage GUI and then go to <strong>Monitor &gt; Devices &gt; BR-WEST-1 (1.1.201.1) &gt; Real Time</strong> and look up for IP route with the VPN 10 filter.  </p>
-<p><img alt="" src="../pic/task1-4-2.png" />  </p>
+<p><img alt="" src="../pic/task1-4-2.png" /> 
+<img alt="" src="../pic/task1-4-3.png" />   </p>
 <p>As you see from the route table, the prefixes from East Regions are learned from BGP core. </p>
 
 

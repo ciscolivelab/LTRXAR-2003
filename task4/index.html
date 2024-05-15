@@ -592,6 +592,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-2-apply-bgp-migration-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Apply BGP Migration Community
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -725,6 +734,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-2-apply-bgp-migration-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Apply BGP Migration Community
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -747,10 +765,21 @@
 <p>This BGP Community is needed to avoid routing domain loops with the OMP prefixes on the Default/flat Controller being redistributed into the BGP Core and then re-originated and redistributed back again, but now to the Region-aware Controller as shown in the next Diagram. </p>
 <p>This is because Region-aware OMP routes are preferred over default region OMP routes. </p>
 <p><span style="background-color:yellow"> <strong>Note: The BGP Community we will be using is 12 in an additive manner on all Border Routers and PE routers. The same community will be used for the for the OMP to BGP redistribution.</strong> </span> </p>
-<p><img alt="" src="../pic/task4-1-1.png" /></p>
+<p><img alt="" src="../pic/task4-0-1.png" /></p>
 <h3 id="step-1-enable-draft-mode-on-all-border-routers"><strong>Step 1: Enable "Draft Mode" on all Border Routers</strong></h3>
 <p>Because this task requires multiple feature templates changes on the Border routers, we are going to enable “Draft Mode” on all Border routers on <strong>Site 201</strong> and <strong>202</strong>. This will diminish the impact of the change, otherwise it may cause a mayor disruption.</p>
 <p>Having said that, go to <strong>Configuration &gt; Templates</strong> and enable “Draft Mode” on both <strong>cEDGE_SITE-201_DT</strong> and <strong>EDGE_SITE-202_DT</strong> device templates as follows.</p>
+<p><img alt="" src="../pic/task4-1-1.png" /></p>
+<p><img alt="" src="../pic/task4-1-2.png" /></p>
+<h2 id="step-2-apply-bgp-migration-community"><strong>Step 2: Apply BGP Migration Community</strong></h2>
+<p>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong>, look up for the <strong>cEDGE_HUB_VPN-10_BGP_FT</strong> feature template and edit it.</p>
+<p><img alt="" src="../pic/task4-2-1.png" /></p>
+<p>First, make ‘Propagate Community’ Global on as shown below.</p>
+<p><img alt="" src="../pic/task4-2-2.png" /></p>
+<p>Next, go to ‘Unicast Address Family’ and click on the little pencil to edit the OMP redistribution</p>
+<p><img alt="" src="../pic/task4-2-3.png" /></p>
+<p>Add <strong>MATCH-MIG-COMM</strong> as the Route Policy.</p>
+<p><img alt="" src="../pic/task4-2-4.png" /></p>
 
 
 

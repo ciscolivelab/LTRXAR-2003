@@ -865,6 +865,22 @@
 <li>Longitude: “Device Specific”</li>
 </ul>
 <p><span style="background-color:yellow"> <strong>Note: Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</strong> </span>  </p>
+<p><img alt="" src="../pic/task4-4-2.png" /></p>
+<p><img alt="" src="../pic/task4-4-3.png" /></p>
+<p>In Device Templates look up for the <strong>cEDGE_SITE-202_DT</strong> device template and click on ‘edit’</p>
+<p><img alt="" src="../pic/task4-4-4.png" /></p>
+<p>In the ‘System’ section now select the <strong>cEDGE_BORDER-EAST-202_SYSTEM_FT</strong> we previously created. This will configure <strong>BR-EAST-1</strong> and <strong>BR-EAST-2</strong> as the border routers role facing the <strong>EAST-REGION</strong>.</p>
+<p><img alt="" src="../pic/task4-4-5.png" /></p>
+<p>Click ‘Update’, then ‘Next’ and confirm in the ‘Config Diff’ section that now both East hubs are assigned to <strong>EAST-REGION (2)</strong>, acting as <strong>Border Routers</strong> and with the migration mode <strong>enabled-from-bgp-core</strong>. Finally click ‘Configure Devices’ to push the changes.</p>
+<p><img alt="" src="../pic/task4-4-6.png" /></p>
+<p>Again, because the <strong>cEDGE_SITE-202_DT</strong> device template is still in draft mode, it won’t make any until we disable draft mode.</p>
+<p>Now, enable the Private1 TLOC as Core transport for all Border devices,  therefore go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the feature template <strong>cEDGE_SITE-20X_VPN-0_PRIVATE1_CHILD-IF_FT</strong> that is shared by all Border devices, and edit it.</p>
+<p><img alt="" src="../pic/task4-4-7.png" /></p>
+<p>Next, under the ‘Tunnel’ section, scroll down and under ‘advance options’ make Global on  the ‘Enable Core Region’ parameter.</p>
+<p><img alt="" src="../pic/task4-4-8.png" /></p>
+<p>Then, click ‘Update’, ‘Next’ and ‘Configure Devices’. By doing this, we have enabled the Private1 Core TLOCs to service the Core Region.</p>
+<p><img alt="" src="../pic/task4-4-9.png" /></p>
+<p>Finally click ‘Configure Devices’, and again, because all Border routers are in “Draft Mode”, it won’t make any change until we disable draft mode.</p>
 
 
 

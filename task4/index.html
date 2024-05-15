@@ -601,6 +601,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-3-configure-mrf-on-west-border-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Configure MRF on WEST Border Routers
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -743,6 +752,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-3-configure-mrf-on-west-border-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Configure MRF on WEST Border Routers
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -761,7 +779,7 @@
   <h1>Task 4 - Configure MRF on Border Routers</h1>
 
 <p>To add from word document task 6 to 9</p>
-<p>In this task you will apply BGP Migration Community to Border Routers</p>
+<p>In this task you will apply BGP Migration Community and MRF on Border Routers</p>
 <p>This BGP Community is needed to avoid routing domain loops with the OMP prefixes on the Default/flat Controller being redistributed into the BGP Core and then re-originated and redistributed back again, but now to the Region-aware Controller as shown in the next Diagram. </p>
 <p>This is because Region-aware OMP routes are preferred over default region OMP routes. </p>
 <p><span style="background-color:yellow"> <strong>Note: The BGP Community we will be using is 12 in an additive manner on all Border Routers and PE routers. The same community will be used for the for the OMP to BGP redistribution.</strong> </span> </p>
@@ -789,6 +807,21 @@
 <p><img alt="" src="../pic/task4-2-7.png" /></p>
 <p>You must see these status and messages for the draft configuration generated for all 4 devices.</p>
 <p><img alt="" src="../pic/task4-2-8.png" /></p>
+<h2 id="step-3-configure-mrf-on-west-border-routers"><strong>Step 3: Configure MRF on WEST Border Routers</strong></h2>
+<p>Go to <strong>Configuration &gt; Templates &gt; Feature</strong> and create a new C8000v ‘Cisco System’ feature template and name it <strong>cEDGE_BORDER-WEST-201_SYSTEM_FT</strong></p>
+<p><img alt="" src="../pic/task4-3-1.png" /></p>
+<p>Define all the next parameters as follows:
+* Location: “Device Specific”
+* Console Baud Rate: 115200
+* Region: West-Region
+* Role: Border Router
+* Enable Migration Mode to Multi-Region Fabric: Enable from BGP Core
+* Migration BGP Community: 12
+* Latitude: “Device Specific”
+* Longitude: “Device Specific”</p>
+<p><span style="background-color:yellow"> <strong>Note: Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</strong> </span>  </p>
+<p><img alt="" src="../pic/task4-3-2.png" /></p>
+<p><img alt="" src="../pic/task4-3-3.png" /></p>
 
 
 

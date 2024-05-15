@@ -61,6 +61,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#step-1-enable-draft-mode-on-all-border-routers" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -544,6 +549,17 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Task 4 - Configure MRF on Border Routers
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -553,6 +569,32 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-enable-draft-mode-on-all-border-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Enable "Draft Mode" on all Border Routers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -668,6 +710,23 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-enable-draft-mode-on-all-border-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Enable "Draft Mode" on all Border Routers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -684,9 +743,14 @@
   <h1>Task 4 - Configure MRF on Border Routers</h1>
 
 <p>To add from word document task 6 to 9</p>
-<p>In this task you will learn how to avoid routing domain loops with the OMP prefixes on the Default/flat Controller being redistributed into the BGP Core and then re-originated and redistributed back again, but now to the Region-aware Controller as shown in the next Diagram. </p>
+<p>In this task you will apply BGP Migration Community to Border Routers</p>
+<p>This BGP Community is needed to avoid routing domain loops with the OMP prefixes on the Default/flat Controller being redistributed into the BGP Core and then re-originated and redistributed back again, but now to the Region-aware Controller as shown in the next Diagram. </p>
 <p>This is because Region-aware OMP routes are preferred over default region OMP routes. </p>
 <p><span style="background-color:yellow"> <strong>Note: The BGP Community we will be using is 12 in an additive manner on all Border Routers and PE routers. The same community will be used for the for the OMP to BGP redistribution.</strong> </span> </p>
+<p><img alt="" src="../pic/task4-1-1.png" /></p>
+<h3 id="step-1-enable-draft-mode-on-all-border-routers"><strong>Step 1: Enable "Draft Mode" on all Border Routers</strong></h3>
+<p>Because this task requires multiple feature templates changes on the Border routers, we are going to enable “Draft Mode” on all Border routers on <strong>Site 201</strong> and <strong>202</strong>. This will diminish the impact of the change, otherwise it may cause a mayor disruption.</p>
+<p>Having said that, go to <strong>Configuration &gt; Templates</strong> and enable “Draft Mode” on both <strong>cEDGE_SITE-201_DT</strong> and <strong>EDGE_SITE-202_DT</strong> device templates as follows.</p>
 
 
 

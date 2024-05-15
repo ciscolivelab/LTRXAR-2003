@@ -610,6 +610,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-4-configure-mrf-on-east-border-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Configure MRF on EAST Border Routers
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -761,6 +770,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-4-configure-mrf-on-east-border-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Configure MRF on EAST Border Routers
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -810,15 +828,17 @@
 <h2 id="step-3-configure-mrf-on-west-border-routers"><strong>Step 3: Configure MRF on WEST Border Routers</strong></h2>
 <p>Go to <strong>Configuration &gt; Templates &gt; Feature</strong> and create a new C8000v ‘Cisco System’ feature template and name it <strong>cEDGE_BORDER-WEST-201_SYSTEM_FT</strong></p>
 <p><img alt="" src="../pic/task4-3-1.png" /></p>
-<p>Define all the next parameters as follows:
-* Location: “Device Specific”
-* Console Baud Rate: 115200
-* Region: West-Region
-* Role: Border Router
-* Enable Migration Mode to Multi-Region Fabric: Enable from BGP Core
-* Migration BGP Community: 12
-* Latitude: “Device Specific”
-* Longitude: “Device Specific”</p>
+<p>Define all the next parameters as follows:</p>
+<ul>
+<li>Location: “Device Specific”</li>
+<li>Console Baud Rate: 115200</li>
+<li>Region: West-Region</li>
+<li>Role: Border Router</li>
+<li>Enable Migration Mode to Multi-Region Fabric: Enable from BGP Core</li>
+<li>Migration BGP Community: 12</li>
+<li>Latitude: “Device Specific”</li>
+<li>Longitude: “Device Specific”</li>
+</ul>
 <p><span style="background-color:yellow"> <strong>Note: Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</strong> </span>  </p>
 <p><img alt="" src="../pic/task4-3-2.png" /></p>
 <p><img alt="" src="../pic/task4-3-3.png" /></p>
@@ -829,6 +849,22 @@
 <p><img alt="" src="../pic/task4-3-5.png" /></p>
 <p>Click ‘Update’, then ‘Next’ and confirm in the ‘Config Diff’ section that now both west hubs are assigned to <strong>WEST-REGION (1)</strong>, acting as <strong>Border Routers</strong> and with the migration mode <strong>enabled-from-bgp-core</strong>. Finally click ‘Configure Devices’ to push the changes.</p>
 <p><img alt="" src="../pic/task4-3-6.png" /></p>
+<p>Again, because the <strong>cEDGE_SITE-201_DT</strong> device template is still in draft mode, it won’t make any change until we disable draft mode.</p>
+<h2 id="step-4-configure-mrf-on-east-border-routers"><strong>Step 4: Configure MRF on EAST Border Routers</strong></h2>
+<p>Now, let’s repeat the same process but now for the East Border routers. Therefore, go to <strong>Configuration &gt; Templates &gt; Feature</strong> and create a new C8000v ‘Cisco System’ feature template and name it <strong>cEDGE_BORDER-EAST-202_SYSTEM_FT</strong>.</p>
+<p><img alt="" src="../pic/task4-4-1.png" /></p>
+<p>Define all the next parameters as follows:</p>
+<ul>
+<li>Location: “Device Specific”</li>
+<li>Console Baud Rate: 115200</li>
+<li>Region: East-Region</li>
+<li>Role: Border Router</li>
+<li>Enable Migration Mode to Multi-Region Fabric: Enable from BGP Core</li>
+<li>Migration BGP Community: 12</li>
+<li>Latitude: “Device Specific”</li>
+<li>Longitude: “Device Specific”</li>
+</ul>
+<p><span style="background-color:yellow"> <strong>Note: Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</strong> </span>  </p>
 
 
 

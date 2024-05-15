@@ -613,6 +613,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-2-enable-region-on-east-edge-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Enable Region on East Edge devices
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -725,6 +734,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-2-enable-region-on-east-edge-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Enable Region on East Edge devices
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -744,7 +762,7 @@
 
 <p>To add from word document task 10 </p>
 <p>In this task you will make the West and East routers Region-Aware</p>
-<h3 id="step-1-enable-region-on-west-edge-devices"><strong>Step 1: Enable Region on  West Edge devices</strong></h3>
+<h3 id="step-1-enable-region-on-west-edge-devices"><strong>Step 1: Enable Region on West Edge devices</strong></h3>
 <p>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong> and look up for the <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> feature template we created in task 3 and edit it.</p>
 <p><img alt="" src="../pic/task5-1-1.png" /></p>
 <p>Make Global on the ‘Region’ parameter to assign all devices attached to this feature template to the <strong>WEST-REGION</strong>. This will cause all devices in the West region to peer to the <strong>Controller-1 (1.1.1.3)</strong> that owns <strong>WEST-REGION (1)</strong>, keeping the peering with the default/flat <strong>Controller-4 (1.1.1.6)</strong> being used for Migration.</p>
@@ -752,8 +770,14 @@
 <p>Click ‘Update’, then ‘Next’.</p>
 <p><img alt="" src="pic/task5-1-3.png" /></p>
 <p>Finally, click ‘Configure Devices’ to apply this change to all devices in the West Region. </p>
+<h3 id="step-2-enable-region-on-east-edge-devices"><strong>Step 2: Enable Region on East Edge devices</strong></h3>
 <p>Now, let’s repeat the same process but now for the East Edge devices, therefore, go to <strong>Configuration &gt; Templates &gt; Feature templates</strong> and look up for the <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong> feature template and edit it.</p>
-<p><img alt="" src="../pic/task5-1-4.png" /></p>
+<p><img alt="" src="../pic/task5-2-1.png" /></p>
+<p>Again, make Global on the ‘Region’ parameter to assign all devices attached to this feature template to the <strong>EAST-REGION</strong>. This will cause all devices in the West region to peer to the <strong>Controller-1 (1.1.1.4)</strong> that owns <strong>EAST-REGION (2)</strong>, keeping the peering with the default/flat <strong>Controller-4 (1.1.1.6)</strong> being used for Migration.</p>
+<p><img alt="" src="../pic/task5-2-2.png" /></p>
+<p>Click ‘Update’, then ‘Next’.</p>
+<p><img alt="" src="../pic/task5-2-3.png" /></p>
+<p>Finally click ‘Configure Devices’ to apply this change to all devices in the East Region. </p>
 
 
 

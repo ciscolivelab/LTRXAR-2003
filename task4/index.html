@@ -619,6 +619,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-4-disable-draft-mode-and-modify-control-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Disable “Draft Mode” and Modify Control Policy
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -779,6 +788,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-4-disable-draft-mode-and-modify-control-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Disable “Draft Mode” and Modify Control Policy
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -881,6 +899,13 @@
 <p>Then, click ‘Update’, ‘Next’ and ‘Configure Devices’. By doing this, we have enabled the Private1 Core TLOCs to service the Core Region.</p>
 <p><img alt="" src="../pic/task4-4-9.png" /></p>
 <p>Finally click ‘Configure Devices’, and again, because all Border routers are in “Draft Mode”, it won’t make any change until we disable draft mode.</p>
+<h2 id="step-4-disable-draft-mode-and-modify-control-policy"><strong>Step 4: Disable “Draft Mode” and Modify Control Policy</strong></h2>
+<p>Go to Configuration &gt; Templates and click ‘Disable Draft Mode” on both cEDGE_SITE-201_DT and EDGE_SITE-202_DT to push all previous configs we have done on from task 6 to 8, as follows.</p>
+<p><img alt="" src="../pic/task4-5-1.png" /></p>
+<p>Then click ‘Disable” on the pop-up window, then ‘Next’ and finally click ‘Configure Devices’ to push all changes</p>
+<p><span style="background-color:yellow"> **Note: This change will cause a minor churn in the network, therefore try to disable “Draft Mode” as fast as possible on both device templates to diminish the impact.</p>
+<p>You can look at the packet loss % on the  Ubuntu <strong>Site-3000-VPN-10-Ubun</strong> host in <strong>Site 3000</strong> using the RDP  with the mRemoteNG client and the ping and trace we left running since task 1 to the IP <strong>10.60.1.101</strong> </span>  </p>
+<p>Repeat the exact same process <strong>but not for EDGE_SITE-202_DT</strong>.</p>
 
 
 

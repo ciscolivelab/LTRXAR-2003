@@ -61,6 +61,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#step-1-create-secondary-region" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -607,6 +612,17 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Task 7 - Create a MRF Secondary Region
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -616,6 +632,41 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-secondary-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create Secondary Region
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-create-transport-interface-feature-templates-with-secondary-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      **Step 2: Create Transport Interface Feature Templates with Secondary Region **
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -668,6 +719,32 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-secondary-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create Secondary Region
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-create-transport-interface-feature-templates-with-secondary-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      **Step 2: Create Transport Interface Feature Templates with Secondary Region **
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -684,6 +761,29 @@
   <h1>Task 7 - Create a MRF Secondary Region</h1>
 
 <p>To add from word document task 12</p>
+<p>In this task you will create a Secondary Region between the <strong>West Site 5000</strong> and the <strong>East Sites 6000</strong> and <strong>7000</strong> as shown in the diagram below.</p>
+<p><img alt="" src="../pic/task7-0-1.png" /> </p>
+<p>First, RDP into the Ubuntu <strong>Site-5000-VPN-10-Ubun</strong> host in <strong>Site 5000</strong> using the mRemoteNG client and the ping and trace the IP <strong>10.60.1.101* that lives in </strong>Site 6000**.</p>
+<p><img alt="" src="../pic/task7-0-2.png" /> </p>
+<p>As you can see, it is reachable through the Fabric in the Core now.</p>
+<h3 id="step-1-create-secondary-region"><strong>Step 1: Create Secondary Region</strong></h3>
+<p>Create the Secondary Region, therefore go to <strong>Configuration &gt; Network Hierarchy</strong> and in Global click on the 3 dots and select ‘Add Node’.</p>
+<p><img alt="" src="../pic/task7-1-1.png" /> </p>
+<p>Select the ‘Region’ Type and name it as <strong>SECONDARY-REGION</strong></p>
+<p><img alt="" src="../pic/task7-1-2.png" /> </p>
+<p>Click ‘Add’.</p>
+<p><span style="background-color:yellow"> <strong>Note. As with the primary West and East Region, now this Secondary region has been assigned with the Region ID 3 automatically by the system</strong> </span></p>
+<h3 id="step-2-create-transport-interface-feature-templates-with-secondary-region">**Step 2: Create Transport Interface Feature Templates with Secondary Region **</h3>
+<p>Now, go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_PUB-INET_IF_FT</strong> feature template and click 'Copy' to clone it.</p>
+<p><img alt="" src="../pic/task7-2-1.png" /> </p>
+<p>Name it as <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and click ‘Copy’</p>
+<p><img alt="" src="../pic/task7-2-2.png" /> </p>
+<p>Now, look up for the template we just cloned named <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and edit it.</p>
+<p><img alt="" src="../pic/task7-2-3.png" /> </p>
+<p>Next, go to the ‘Tunnel’ section and under  ‘Advanced Options’, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong> and click ‘update’.</p>
+<p><img alt="" src="../pic/task7-2-4.png" /> </p>
+<p>Clicl 'Update'.</p>
+<p>Step 4. Again, go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_MPLS_IF_FT</strong> feature template to clone it.</p>
 
 
 

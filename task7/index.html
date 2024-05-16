@@ -658,7 +658,7 @@
         <li class="md-nav__item">
   <a href="#step-2-create-transport-interface-feature-templates-with-secondary-region" class="md-nav__link">
     <span class="md-ellipsis">
-      **Step 2: Create Transport Interface Feature Templates with Secondary Region **
+      Step 2: Create Transport Interface Feature Templates with Secondary Region
     </span>
   </a>
   
@@ -667,7 +667,34 @@
         <li class="md-nav__item">
   <a href="#step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm" class="md-nav__link">
     <span class="md-ellipsis">
-      **Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm **
+      Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-create-a-system-feature-template-with-secondary-region-for-site-5000" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Create a System Feature Template with Secondary Region for Site 5000
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-update-site-5000-device-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Update Site 5000 Device Template
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-create-a-system-feature-template-with-secondary-region-for-site-6000-and-7000" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Create a System Feature Template with Secondary Region for Site 6000 and 7000
     </span>
   </a>
   
@@ -746,7 +773,7 @@
         <li class="md-nav__item">
   <a href="#step-2-create-transport-interface-feature-templates-with-secondary-region" class="md-nav__link">
     <span class="md-ellipsis">
-      **Step 2: Create Transport Interface Feature Templates with Secondary Region **
+      Step 2: Create Transport Interface Feature Templates with Secondary Region
     </span>
   </a>
   
@@ -755,7 +782,34 @@
         <li class="md-nav__item">
   <a href="#step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm" class="md-nav__link">
     <span class="md-ellipsis">
-      **Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm **
+      Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-create-a-system-feature-template-with-secondary-region-for-site-5000" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Create a System Feature Template with Secondary Region for Site 5000
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-update-site-5000-device-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Update Site 5000 Device Template
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-create-a-system-feature-template-with-secondary-region-for-site-6000-and-7000" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Create a System Feature Template with Secondary Region for Site 6000 and 7000
     </span>
   </a>
   
@@ -791,7 +845,7 @@
 <p><img alt="" src="../pic/task7-1-2.png" /> </p>
 <p>Click ‘Add’.</p>
 <p><span style="background-color:yellow"> <strong>Note. As with the primary West and East Region, now this Secondary region has been assigned with the Region ID 3 automatically by the system</strong> </span></p>
-<h3 id="step-2-create-transport-interface-feature-templates-with-secondary-region">**Step 2: Create Transport Interface Feature Templates with Secondary Region **</h3>
+<h3 id="step-2-create-transport-interface-feature-templates-with-secondary-region"><strong>Step 2: Create Transport Interface Feature Templates with Secondary Region</strong></h3>
 <p>Now, go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_PUB-INET_IF_FT</strong> feature template and click 'Copy' to clone it.</p>
 <p><img alt="" src="../pic/task7-2-1.png" /> </p>
 <p>Name it as <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and click ‘Copy’</p>
@@ -813,7 +867,7 @@
 <p>Next, go to the ‘Tunnel’ section and under ‘Advanced Options’, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong></p>
 <p><img alt="" src="../pic/task7-2-10.png" /> </p>
 <p>Click 'Update'.</p>
-<h3 id="step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm">**Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm **</h3>
+<h3 id="step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm"><strong>Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm</strong></h3>
 <p>Go to <strong>Configuration &gt; Templates &gt; Feature</strong> and let’s copy now the existing <strong>cEDGE_ALL_OMP_FT</strong> feature template. </p>
 <p>Name it as <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong></p>
 <p><img alt="" src="../pic/task7-3-1.png" /></p>
@@ -824,7 +878,36 @@
 <p><img alt="" src="../pic/task7-3-3.png" /></p>
 <p>Click 'Update'.</p>
 <p><span style="background-color:yellow"> <strong>Note: The default value is Off, and by default, OMP gives preference to a direct tunnel path over a hierarchical path because the direct path has fewer hops</strong> </span></p>
-<p><span style="background-color:yellow"> ** With this configuration, we disable the comparison of the number of hops, OMP applies equal-cost multi-path routing (ECMP) to all routes, and packets can use all available paths.** </span></p>
+<p><span style="background-color:yellow"> <strong>With this configuration, we disable the comparison of the number of hops, OMP applies equal-cost multi-path routing (ECMP) to all routes, and packets can use all available paths.</strong> </span></p>
+<h3 id="step-4-create-a-system-feature-template-with-secondary-region-for-site-5000"><strong>Step 4: Create a System Feature Template with Secondary Region for Site 5000</strong></h3>
+<p>Let’s clone the <strong>Cisco System</strong> Feature template currently used by the <strong>Site 5000</strong> edge router to participate in the secondary. So, go <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and click ‘Copy’</p>
+<p>Name it as <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong>.</p>
+<p><img alt="" src="../pic/task7-4-1.png" /></p>
+<p>Click ‘Copy’.</p>
+<p><img alt="" src="../pic/task7-4-2.png" /></p>
+<p>Look up for the <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong> feature template we just created and click ‘Edit’</p>
+<p><img alt="" src="../pic/task7-4-3.png" /></p>
+<p>Make Global on the ‘Secondary Region’ parameter and select <strong>SECONDARY-REGION</strong> from the dropdown menu.</p>
+<p><img alt="" src="../pic/task7-4-4.png" /></p>
+<p>Click ‘Update’ to save the changes.</p>
+<h3 id="step-5-update-site-5000-device-template"><strong>Step 5: Update Site 5000 Device Template</strong></h3>
+<p>Next, go to <strong>Configuration &gt; Templates &gt; Device Templates</strong> look up for the <strong>cEDGE_SITE-5000_DT</strong> device template and edit it.</p>
+<p><img alt="" src="../pic/task7-5-1.png" /></p>
+<p>In the ‘Cisco System’ section, select the feature template we previously created named <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong></p>
+<p><img alt="" src="../pic/task7-5-2.png" /></p>
+<p>Now, in the ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template we created in step 3.</p>
+<p><img alt="" src="../pic/task7-5-3.png" /></p>
+<p>Next, in the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 1 named <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong> respectively.</p>
+<p><img alt="" src="../pic/task7-5-4.png" /></p>
+<p>Finally, click ‘Update’, and fill out the 2 missing variables with <strong>GigabitEthernet2</strong> and <strong>10.2.11.2/24</strong> respectively.</p>
+<p><img alt="" src="../pic/task7-5-6.png" /></p>
+<p>Click ‘Update’ and you should see in the ‘Config Diff’ section all the next lines in green color being pushed to the device if you scroll down</p>
+<p><img alt="" src="../pic/task7-5-7.png" />
+<img alt="" src="../pic/task7-5-8.png" />
+<img alt="" src="../pic/task7-5-9.png" />
+<img alt="" src="../pic/task7-5-10.png" /></p>
+<p>Finally click ‘Configure Devices’.</p>
+<h3 id="step-4-create-a-system-feature-template-with-secondary-region-for-site-6000-and-7000"><strong>Step 4: Create a System Feature Template with Secondary Region for Site 6000 and 7000</strong></h3>
 
 
 

@@ -656,9 +656,13 @@
 </ul>
 <p><img alt="" src="../pic/task1-1-1.png" /></p>
 <ul>
-<li>This<strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong> policy adjusts the Control Plane to intercommunicate all sites within the West region in a full-mesh fashion but without direct connectivity to the East region, by denying TLOCs and using TLOC re-writes. For this we rely on the West Hub (Site 201) connectivity towards the East Hub (Site 202) through the BGP Core network using Service side VPN.  </li>
+<li>This <strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong> policy adjusts the Control Plane to intercommunicate all sites within the West region in a full-mesh fashion but without direct connectivity to the East region, by denying TLOCs and using TLOC re-writes. For this we rely on the West Hub (Site 201) connectivity towards the East Hub (Site 202) through the BGP Core network using Service side VPN.  </li>
 </ul>
-<p><span style="background-color:yellow"> <strong>Note: Refer to the Regional Hub &amp; Spoke with BGP Core topology diagram for further analysis.</strong> </span>  </p>
+<p><span style="background-color:yellow"> </span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to the Regional Hub &amp; Spoke with BGP Core topology diagram for further analysis.</p>
+</div>
 <p>As you can see it is a complex policy even for a very small environment with same two transports used everywhere.  </p>
 <div class="highlight"><pre><span></span><code>viptela-policy:policy
  control-policy EAST-BRANCHES-SITES-CP

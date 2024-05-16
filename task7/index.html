@@ -664,6 +664,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      **Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm **
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -743,6 +752,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      **Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm **
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -782,8 +800,31 @@
 <p><img alt="" src="../pic/task7-2-3.png" /> </p>
 <p>Next, go to the ‘Tunnel’ section and under  ‘Advanced Options’, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong> and click ‘update’.</p>
 <p><img alt="" src="../pic/task7-2-4.png" /> </p>
-<p>Clicl 'Update'.</p>
+<p>Click 'Update'.</p>
 <p>Step 4. Again, go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_MPLS_IF_FT</strong> feature template to clone it.</p>
+<p><img alt="" src="../pic/task7-2-5.png" /> </p>
+<p>Name it as <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong></p>
+<p><img alt="" src="../pic/task7-2-6.png" /> </p>
+<p>Click ‘Copy’.</p>
+<p>Now, look up again for the template we just cloned named <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong> and edit it.</p>
+<p><img alt="" src="../pic/task7-2-8.png" /> </p>
+<p>First, define the <strong>Interface Name</strong> as a variable (this because it will be used for Site7000 that uses a different interface for the MPLS TLOC).</p>
+<p><img alt="" src="../pic/task7-2-9.png" /> </p>
+<p>Next, go to the ‘Tunnel’ section and under ‘Advanced Options’, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong></p>
+<p><img alt="" src="../pic/task7-2-10.png" /> </p>
+<p>Click 'Update'.</p>
+<h3 id="step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm">**Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm **</h3>
+<p>Go to <strong>Configuration &gt; Templates &gt; Feature</strong> and let’s copy now the existing <strong>cEDGE_ALL_OMP_FT</strong> feature template. </p>
+<p>Name it as <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong></p>
+<p><img alt="" src="../pic/task7-3-1.png" /></p>
+<p>Click ‘Copy’.</p>
+<p>Once created it look up for <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> and edit it.</p>
+<p><img alt="" src="../pic/task7-3-2.png" /></p>
+<p>Now go to the ‘Best Path’ section, and make Global on to enable the <strong>Ignore Region-Path Length During Best-Path Algorithm</strong> parameter, then click ‘update’. </p>
+<p><img alt="" src="../pic/task7-3-3.png" /></p>
+<p>Click 'Update'.</p>
+<p><span style="background-color:yellow"> **Note: The default value is Off, and by default, OMP gives preference to a direct tunnel path over a hierarchical path because the direct path has fewer hops.</p>
+<p>With this configuration, we disable the comparison of the number of hops, OMP applies equal-cost multi-path routing (ECMP) to all routes, and packets can use all available paths. ** </span></p>
 
 
 

@@ -674,6 +674,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#step-2-understand-activate-and-confirm-mrf-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Understand, Activate and Confirm MRF Policy
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -718,6 +727,15 @@
   <a href="#step-1-create-a-new-control-policy" class="md-nav__link">
     <span class="md-ellipsis">
       Step 1: Create a New Control Policy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-understand-activate-and-confirm-mrf-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Understand, Activate and Confirm MRF Policy
     </span>
   </a>
   
@@ -771,6 +789,43 @@
 <p><img alt="" src="../pic/task8-1-12.png" /></p>
 <p>Next, add one more match for ‘Path Type’ and select <strong>HIERARCHICAL</strong></p>
 <p><img alt="" src="../pic/task8-1-13.png" /></p>
+<p>Now click ‘Actions’ and leave the ‘Reject’ option enabled.</p>
+<p><img alt="" src="../pic/task8-1-14.png" /></p>
+<p>Click 'Save Match and Actions'</p>
+<p>Click again on ‘+ Sequence Rule’, and do not select any match.</p>
+<p><img alt="" src="../pic/task8-1-15.png" /></p>
+<p>Next, click ‘Actions, and enable ‘Accept’.</p>
+<p><img alt="" src="../pic/task8-1-16.png" /></p>
+<p>Click ‘Save Match and Actions’.</p>
+<p>Finally, click ‘Save Control Policy’.</p>
+<p>You will be returned to the next ‘Configure Topology and VPN Membership’ where now we can see the Control Policy we just created.</p>
+<p><img alt="" src="../pic/task8-1-17.png" /></p>
+<p>Click ‘Next’, and ‘Next’ once again till you get to the ‘Apply Policies to Sites and VPNs’ section.</p>
+<p>Name, this Centralized Policy as <strong>MRF_POLICY</strong>, then click ‘+ New Site/Region List’ and enable ‘Region’ with <strong>ACCESS</strong> as the Outbound Region List as follows.</p>
+<p><img alt="" src="pic/task8-1-18.png" /></p>
+<p>Click 'Add'.</p>
+<p><img alt="" src="../pic/task8-1-19.png" /></p>
+<p>Finally click ‘Save Policy’.</p>
+<h3 id="step-2-understand-activate-and-confirm-mrf-policy"><strong>Step 2: Understand, Activate and Confirm MRF Policy</strong></h3>
+<p>Before we activate this new MRF Policy, go to <strong>Configuration &gt; Policies</strong> and click ‘Preview’ on the MRF_POLICY policy we just created</p>
+<p><img alt="" src="../pic/task8-2-1.png" /></p>
+<p>Try to understand such policy first, but at the end, what we are doing with the MRF Control Policy is to not advertise prefixes from Access regions <strong>1</strong> and <strong>2</strong> with a hierarchical path and from <strong>VPN 11</strong> to <strong>Sites 5000, 6000</strong> and <strong>7000</strong> only.</p>
+<p><img alt="" src="../pic/task8-2-2.png" /></p>
+<p>This a good use-case example, where we do want <strong>VPN 10</strong>, where we have our critical Corporate traffic, to go through the Core or the direct Path with ECMP, while only allowing our <strong>Guest Traffic</strong> in <strong>VPN 11</strong> to go through the direct path on only these sites with Secondary Regions, without affecting the rest of the access sites. This with the intent to reduce costs and bandwidth at the Core.</p>
+<p>Activate the Policy the <strong>MRF_POLICY</strong> we just created.</p>
+<p><img alt="" src="../pic/task8-2-3.png" /></p>
+<p>Click ‘Activate’ and ‘Activate’ once again.</p>
+<p>Now, SSH into <strong>EDGE-BRANCH-5-01</strong> and issue the show command <strong>show ip route vrf 10</strong>.</p>
+<p><img alt="" src="../pic/task8-2-4.png" /></p>
+<p>As we can see on the output above, we do have all prefixes from the East Region using all paths available for ECMP, being through the Core or through the Direct Path.</p>
+<p>Now, run the show command <strong>show ip route vrf 11</strong></p>
+<p><img alt="" src="../pic/task8-2-5.png" /></p>
+<p>Above we see now, that for <strong>VPN 11</strong> we can only communicate to the East Region using the direct path as defined in the MRF Policy.</p>
+<p>We can confirm the same by running a trace from the <strong>Site-5000-VPN-10-Ubun</strong> Ubuntu host to the <strong>10.60.1.101</strong> that lives in <strong>Site 6000</strong> in service <strong>VPN 10</strong></p>
+<p><img alt="" src="../pic/task8-2-6.png" /></p>
+<p>This time, because the ECMP hash, the traffic is going through the Core but it may go through the Direct Path as well.</p>
+<p>Finally, let’s repeat the same tests but now from the <strong>Site-5000-VPN-11-Ubun</strong> Ubuntu host to the <strong>10.61.1.101</strong> that lives in <strong>Site 6000</strong> in service <strong>VPN 11</strong>.</p>
+<p><img alt="" src="../pic/task8-2-7.png" /></p>
 
 
 

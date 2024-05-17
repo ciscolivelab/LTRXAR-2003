@@ -59,6 +59,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#step-1-create-a-new-control-policy" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -626,6 +631,17 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Task 8 - MRF Policy
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -635,6 +651,32 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-a-new-control-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create a New Control Policy
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -666,6 +708,23 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-a-new-control-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create a New Control Policy
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -681,7 +740,37 @@
 
   <h1>Task 8 - MRF Policy</h1>
 
-<p>To add from word document task 13</p>
+<p>In this task you will create a Multi-Region Fabric (MRF) Control Policy that will steer VPN 11 traffic through the direct path over the Secondary Region while all other VPN 10 traffic will ECMP through all paths.</p>
+<h3 id="step-1-create-a-new-control-policy"><strong>Step 1: Create a New Control Policy</strong></h3>
+<p>Go to <strong>Configuration &gt; Policies &gt; Add Policy</strong></p>
+<p><img alt="" src="../pic/task8-1-1.png" /></p>
+<p>On the left-side pane from the first section, select <strong>Region</strong> and then click ‘New Region List’</p>
+<p><img alt="" src="../pic/task8-1-2.png" /></p>
+<p>Name this Region List as <strong>ACCESS</strong> with the regions <strong>1,2</strong>.</p>
+<p><img alt="" src="../pic/task8-1-3.png" /></p>
+<p>Click ‘Add’.</p>
+<p>Also, let’s create a Site List, so click on the left-side pane ‘Site’ and then ‘+New Site List’.</p>
+<p><img alt="" src="../pic/task8-1-4.png" /></p>
+<p>Name it as <strong>SECONDARY_REGION_SITES</strong> with the Sites <strong>5000,6000,7000</strong></p>
+<p><img alt="" src="../pic/task8-1-5.png" /></p>
+<p>Click ‘Add’ and then ‘Next’. </p>
+<p>Now, click <strong>Add Topology</strong> and select <strong>Custom Control (Route &amp; Tloc)</strong></p>
+<p><img alt="" src="../pic/task8-1-6.png" /></p>
+<p>Name this Control Policy as <strong>MRF_CP</strong>.</p>
+<p><img alt="" src="../pic/task8-1-7.png" /></p>
+<p>Click ‘+ Sequence Type’ and then select ‘TLOC’</p>
+<p><img alt="" src="../pic/task8-1-8.png" /></p>
+<p>Next, click on ‘+ Sequence Rule’, and select ‘Actions’ and finally enable ‘Accept’</p>
+<p><img alt="" src="../pic/task8-1-9.png" /></p>
+<p>Click ‘Save Match and Actions’.</p>
+<p>Now, again click ‘+ Sequence Type’, but this time select ‘Route’</p>
+<p><img alt="" src="../pic/task8-1-10.png" /></p>
+<p>Click on ‘+ Sequence Rule’, and under the ‘Match’ section, select ‘Region’ with the Region List <strong>ACCESS</strong></p>
+<p><img alt="" src="../pic/task8-1-11.png" /></p>
+<p>Also, add a match for ‘VPN’ for <strong>VPN ID 11</strong></p>
+<p><img alt="" src="../pic/task8-1-12.png" /></p>
+<p>Next, add one more match for ‘Path Type’ and select <strong>HIERARCHICAL</strong></p>
+<p><img alt="" src="../pic/task8-1-13.png" /></p>
 
 
 

@@ -662,7 +662,9 @@
 <p class="admonition-title">Note</p>
 <p>Refer to the Regional Hub &amp; Spoke with BGP Core topology diagram for further analysis.</p>
 </div>
-<p>As you can see it is a complex policy even for a very small environment with same two transports used everywhere.  </p>
+<ul>
+<li>As you can see it is a complex policy even for a very small environment with same two transports used everywhere.  </li>
+</ul>
 <div class="highlight"><pre><span></span><code>viptela-policy:policy
  control-policy EAST-BRANCHES-SITES-CP
     sequence 1
@@ -817,29 +819,50 @@ apply-policy
 !
 </code></pre></div>
 <h3 id="step-2-review-bfd-tunnels"><strong>Step 2: Review BFD Tunnels</strong></h3>
-<p>Next, you'll examine the BFD tunnels from the spoke sites. You can either utilize the <strong>Manager Real Time UI option</strong> to confirm TLOCs and BFD sessions, or opt to SSH into the WAN Edges and execute command lines via an SSH terminal. For SSH access, you can leverage <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" />on your desktop.  </p>
+<p>Next, you'll examine the BFD tunnels from the spoke sites. You can either utilize the <strong>Manager Real Time UI option</strong> to confirm TLOCs and BFD sessions, or opt to SSH into the WAN Edges and execute command lines via an SSH terminal.<br />
+For SSH access, you can leverage <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" />on your desktop.  </p>
 <ul>
-<li>Navigate to the SD-WAN Manager navagination bar, then proceed to <strong>Monitor &gt; Device</strong>. Locate <strong>EDGE-BRANCH-3-01</strong>, click on the device and choose <strong>Real Time</strong> as show in the screenshot below.  </li>
-</ul>
+<li>
+<p>Navigate to the SD-WAN Manager navagination bar, then proceed to <strong>Monitor &gt; Device</strong>. Locate <strong>EDGE-BRANCH-3-01</strong>, click on the device and choose <strong>Real Time</strong> as show in the screenshot below.  </p>
+</li>
+<li>
 <p>In the <strong>Device Options</strong> field, enter <strong>OMP Received TLOCS</strong>. As you can see, there are no TLOCs now to any site in the East region and therefore no tunnels to them.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task1-2-1.png" />  </p>
-<p>We can confirm this by looking for <strong>BFD Sessions</strong> in the Device Options field.<br />
-<strong>We don’t see East TLOC’s IPs like 1.1.60.1, 1.1.70.1, 1.1.202.1 or 1.1.202.2 nor BFD tunnels against their Site IDs 202,6000 and 7000</strong>  </p>
+<ul>
+<li>We can confirm this by looking for <strong>BFD Sessions</strong> in the Device Options field.<br />
+<strong>We don’t see East TLOC’s IPs like 1.1.60.1, 1.1.70.1, 1.1.202.1 or 1.1.202.2 nor BFD tunnels against their Site IDs 202,6000 and 7000</strong>  </li>
+</ul>
 <p><img alt="" src="../pic/task1-2-2.png" />  </p>
 <h3 id="step-3-review-ip-route"><strong>Step 3: Review IP Route</strong></h3>
 <p>Next, you'll examine the route tables from the spoke sites.  </p>
-<p>In the <strong>Device Options</strong> field, enter <strong>IP route</strong>. As you can see, even though it doesn't have tunnels towards the East sites, it has prefixes for such sites but pointing to the <strong>West Hubs (Site 201)</strong> TLOCs IPs instead of the originators.  </p>
+<ul>
+<li>In the <strong>Device Options</strong> field, enter <strong>IP route</strong>.  </li>
+<li>As you can see, even though it doesn't have tunnels towards the East sites, it has prefixes for such sites but pointing to the <strong>West Hubs (Site 201)</strong> TLOCs IPs instead of the originators.  </li>
+</ul>
 <p><img alt="" src="../pic/task1-3-1.png" />
 <img alt="" src="../pic/task1-3-2.png" />    </p>
 <h3 id="step-4-review-path-between-spoke-sites"><strong>Step 4: Review Path between spoke sites</strong></h3>
 <p>Next, you'll run traceroute and ping to test reachability of ubuntu hosts between different branch sites.  </p>
-<p>Click <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" /> on your desktop, select <strong>Site-3000-VPN-10-Ubun</strong> and open RDP session to the host with username <strong>viptela</strong>, password<strong>C1sco12345</strong>. Run ping and traceroute to Ubuntu host in Site 6000 with IP <strong>10.60.1.101</strong>.   </p>
+<ul>
+<li>Click <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" /> on your desktop, select <strong>Site-3000-VPN-10-Ubun</strong> and open RDP session to the host with password <strong>C1sco12345</strong>. Run ping and traceroute to Ubuntu host in Site 6000 with IP <strong>10.60.1.101</strong>.   </li>
+</ul>
 <p><img alt="" src="../pic/task1-4-1.png" />  </p>
-<p>From the trace above, even though the site 3000 and site 6000 have the Public-Internet transport in common, they do not communicate directly to each other because the current active Control Policy, going through the Hubs and therefore the BGP Core squared with red color in the trace.</p>
-<p>Next, let's check the route table on West hub site <strong>BR-WEST-1</strong>. Go to the Manage GUI and then go to <strong>Monitor &gt; Devices &gt; BR-WEST-1 (1.1.201.1) &gt; Real Time</strong> and look up for IP route with the VPN 10 filter.  </p>
+<ul>
+<li>
+<p>From the trace above, even though site 3000 and site 6000 have the Public-Internet transport in common, they do not communicate directly to each other.<br />
+That is because the active Control Policy forces traffic going through the Hubs and then the BGP Core as highlighted in red in the trace.  </p>
+</li>
+<li>
+<p>Next, let's check the route table on West hub site <strong>BR-WEST-1</strong>. Go to the Manager GUI and then go to <strong>Monitor &gt; Devices &gt; BR-WEST-1 (1.1.201.1) &gt; Real Time</strong> and look up for IP route with the VPN 10 filter.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task1-4-2.png" /> 
 <img alt="" src="../pic/task1-4-3.png" />   </p>
-<p>As you see from the route table, the prefixes from East Regions are learned from BGP core. </p>
+<ul>
+<li>As you see from the route table, the prefixes from East Regions are learned from BGP core. </li>
+</ul>
 
 
 

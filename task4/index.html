@@ -660,7 +660,10 @@
 <p>In this task you will apply BGP Migration Community and MRF on Border Routers.</p>
 <p>This BGP Community is needed to avoid routing domain loops with the OMP prefixes on the Default/flat Controller being redistributed into the BGP Core and then re-originated and redistributed back again, but now to the Region-aware Controller as shown in the next Diagram. </p>
 <p>This is because Region-aware OMP routes are preferred over default region OMP routes. </p>
-<p><span style="background-color:yellow"> <strong>Note: The BGP Community we will be using is 12 in an additive manner on all Border Routers and PE routers. The same community will be used for the for the OMP to BGP redistribution.</strong> </span> </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>The BGP Community we will be using is 12 in an additive manner on all Border Routers and PE routers. The same community will be used for the for the OMP to BGP redistribution.  </p>
 <p><img alt="" src="../pic/task4-0-1.png" /></p>
 <h3 id="step-1-enable-draft-mode-on-all-border-routers"><strong>Step 1: Enable "Draft Mode" on all Border Routers</strong></h3>
 <p>Because this task requires multiple feature templates changes on the Border routers, we are going to enable “Draft Mode” on all Border routers on <strong>Site 201</strong> and <strong>202</strong>. This will diminish the impact of the change, otherwise it may cause a mayor disruption.</p>
@@ -699,7 +702,10 @@
 <li>Latitude: “Device Specific”</li>
 <li>Longitude: “Device Specific”</li>
 </ul>
-<p><span style="background-color:yellow"> <strong>Note: Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</strong> </span>  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.  </p>
 <p><img alt="" src="../pic/task4-3-2.png" /></p>
 <p><img alt="" src="../pic/task4-3-3.png" /></p>
 <p>Click ‘Save’.</p>
@@ -724,7 +730,10 @@
 <li>Latitude: “Device Specific”</li>
 <li>Longitude: “Device Specific”</li>
 </ul>
-<p><span style="background-color:yellow"> <strong>Note: Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</strong> </span>  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.  </p>
 <p><img alt="" src="../pic/task4-4-2.png" /></p>
 <p><img alt="" src="../pic/task4-4-3.png" /></p>
 <p>In Device Templates look up for the <strong>cEDGE_SITE-202_DT</strong> device template and click on ‘edit’</p>
@@ -745,8 +754,14 @@
 <p>Go to Configuration &gt; Templates and click ‘Disable Draft Mode” on both cEDGE_SITE-201_DT and EDGE_SITE-202_DT to push all previous configs we have done on from step 1 to 4, as follows.</p>
 <p><img alt="" src="../pic/task4-5-1.png" /></p>
 <p>Then click ‘Disable” on the pop-up window, then ‘Next’ and finally click ‘Configure Devices’ to push all changes</p>
-<p><span style="background-color:yellow"> <strong>Note: This change will cause a minor churn in the network, therefore try to disable “Draft Mode” as fast as possible on both device templates to diminish the impact.</strong> </span> </p>
-<p><span style="background-color:yellow"> <strong>You can look at the packet loss % on the  Ubuntu </strong>Site-3000-VPN-10-Ubun<strong> host in </strong>Site 3000<strong> using the RDP  with the mRemoteNG client and the ping and trace we left running since task 1 to the IP </strong>10.60.1.101** </span>  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>This change will cause a minor churn in the network, therefore try to disable “Draft Mode” as fast as possible on both device templates to diminish the impact.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+</div>
+<p>You can look at the packet loss % on the  Ubuntu <strong>Site-3000-VPN-10-Ubun</strong> host in <strong>Site 3000</strong> using the RDP  with the mRemoteNG client and the ping and trace we left running since task 1 to the IP <strong>10.60.1.101</strong></p>
 <p>Repeat the exact same process <strong>but not for EDGE_SITE-202_DT</strong>.</p>
 <p>Now go to <strong>Monitor &gt; Devices &gt; BR-WEST-1 &gt; Real Time</strong> and look up for OMP Peers in the search bar.</p>
 <p>Thanks to the previous configurations on west hubs, we have now OMP session to <strong>Controller-1 (1.1.1.3)</strong> that owns <strong>WEST-REGION (1)</strong>, <strong>Controller-3 (1.1.1.5)</strong> that owns the <strong>Core Region (0)</strong>  and the default/flat <strong>Controller-4 (1.1.1.6)</strong> being used for Migration.</p>
@@ -757,7 +772,10 @@
 <p>Hence, go to <strong>Configuration &gt; Policies</strong> and activate the pre-configured <strong>OMP_CORE_TLOCS_POLICY</strong> Centralized Policy.</p>
 <p><img alt="" src="../pic/task4-5-4.png" /></p>
 <p>Click ‘Activate’.</p>
-<p><span style="background-color:yellow"> <strong>Note: Analyze this Centralized Policy we just activated, where we now advertise the Core Private1 TLOCs to the between the Border routers, besides its respective Regional Hub &amp; Spoke logic.</strong> </span> </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Analyze this Centralized Policy we just activated, where we now advertise the Core Private1 TLOCs to the between the Border routers, besides its respective Regional Hub &amp; Spoke logic.</p>
 
 
 

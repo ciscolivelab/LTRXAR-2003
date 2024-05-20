@@ -700,7 +700,7 @@ In this lab, WEST-REGION has been assigned with Region ID 1, and EAST-REGION has
 <p><img alt="" src="../pic/task2-3-5.png" />  </p>
 <ul>
 <li>
-<p>After assigning distributed controllers for regions, all routers in the overlay have not been assigned to region and we just have **Controller-4(1.1.1.6) serving as default controller for the whole overlay. You can confirm that by checking the controller control connections of all routers.  </p>
+<p>After assigning distributed controllers for regions, all WAN Edges in the overlay have not been assigned to a region, leaving **Controller-4(1.1.1.6) as the default controller for the entire overlay. You can verify that by checking the controller control connections of all WAN Edges.  </p>
 </li>
 <li>
 <p>Go to <strong>Monitor &gt; Devices</strong> and look the <strong>vSmart Control</strong> column.  </p>
@@ -709,12 +709,12 @@ In this lab, WEST-REGION has been assigned with Region ID 1, and EAST-REGION has
 <p><img alt="" src="../pic/task2-3-6.png" />  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Your output may display <strong>0 control connection</strong>. It is cosmatic UI issue, you can confirm the number of connections by click the Edge and check Control Connections from Monitor - Devices view.  </p>
 </div>
-<p>Your output may display 0 control connection. It is cosmatic UI issue, you can confirm the number of connections by click the Edge and check Control Connections.  </p>
 <ul>
-<li>You can also verify this by going to <strong>Monitor &gt; Devices</strong>; select a device and then look up for <strong>OMP peers</strong> with the <strong>Real Time</strong> function.<br />
-For instance, <strong>EDGE-BRANCH-3-01</strong> shows only one OMP peer with <strong>Controller-4</strong> showing Region ID as None.  </li>
+<li>You can also verify this by going to <strong>Monitor &gt; Devices</strong>; select a device and then look up for <strong>OMP peers</strong> with the <strong>Real Time</strong> function.  </li>
 </ul>
+<p>For instance, <strong>EDGE-BRANCH-3-01</strong> shows only one OMP peer with <strong>Controller-4</strong> showing Region ID as None.  </p>
 <p><img alt="" src="../pic/task2-3-7.png" />  </p>
 
 

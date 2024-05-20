@@ -823,17 +823,17 @@ apply-policy
 For SSH access, you can leverage <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" />on your desktop.  </p>
 <ul>
 <li>
-<p>Navigate to the SD-WAN Manager navagination bar, then proceed to <strong>Monitor &gt; Device</strong>. Locate <strong>EDGE-BRANCH-3-01</strong>, click on the device and choose <strong>Real Time</strong> as show in the screenshot below.  </p>
+<p>From the SD-WAN Manager navagination bar, click <strong>Monitor &gt; Device</strong>. Locate <strong>EDGE-BRANCH-3-01</strong>, click on the device and choose <strong>Real Time</strong> as shown in the screenshot below.  </p>
 </li>
 <li>
-<p>In the <strong>Device Options</strong> field, enter <strong>OMP Received TLOCS</strong>. As you can see, there are no TLOCs now to any site in the East region and therefore no tunnels to them.  </p>
+<p>In the <strong>Device Options</strong> field, enter <strong>OMP Received TLOCS</strong>. As you can see, there are no TLOCs to any site in the East region and therefore no tunnels to any sites in the East region either.  </p>
 </li>
 </ul>
 <p><img alt="" src="../pic/task1-2-1.png" />  </p>
 <ul>
-<li>We can confirm this by looking for <strong>BFD Sessions</strong> in the Device Options field.<br />
-<strong>We don’t see East TLOC’s IPs like 1.1.60.1, 1.1.70.1, 1.1.202.1 or 1.1.202.2 nor BFD tunnels against their Site IDs 202,6000 and 7000</strong>  </li>
+<li>We can confirm this by looking for <strong>BFD Sessions</strong> in the Device Options field.  </li>
 </ul>
+<p><strong>We don’t see East TLOC’s IPs like 1.1.60.1, 1.1.70.1, 1.1.202.1 or 1.1.202.2 nor BFD tunnels against their Site IDs 202,6000 and 7000</strong>  </p>
 <p><img alt="" src="../pic/task1-2-2.png" />  </p>
 <h3 id="step-3-review-ip-route"><strong>Step 3: Review IP Route</strong></h3>
 <p>Next, you'll examine the route tables from the spoke sites.  </p>

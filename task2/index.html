@@ -637,8 +637,8 @@
 </ul>
 <h3 id="step-1-enable-mrf"><strong>Step 1: Enable MRF</strong></h3>
 <p>In this step, you will enable MRF on vManage.  </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p><strong>The MRF feature has been pre-enabled for this lab. This section is for your review of the workflow</strong> </p>
 </div>
 <ul>
@@ -646,26 +646,28 @@
 </ul>
 <p><img alt="" src="../pic/task2-1-1.png" /></p>
 <h3 id="step-2-create-regions"><strong>Step 2: Create Regions</strong></h3>
-<p>After enabling MRF, the subsequent step involves creating the regions. For this lab, we'll establish two regions: <strong>EAST-REGION </strong>and <strong>WEST-REGION</strong>. Upon creation, the system automatically assigns a Region ID. In this setup, WEST-REGION has been designated with Region ID 1, and EAST-REGION has been assigned Region ID 2.  </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-</div>
+<p>After enabling MRF, the subsequent step involves creating the regions.<br />
+For this lab, we'll establish two regions: <strong>EAST-REGION </strong>and <strong>WEST-REGION</strong>. Upon creation, the system automatically assigns a Region ID.<br />
+In this lab, WEST-REGION has been assigned with Region ID 1, and EAST-REGION has been assigned Region ID 2.  </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>The Regioins has been pre-enabled for this lab. This section is for your review of the workflow  </p>
+</div>
 <ul>
 <li>Go to <strong>Configuration &gt; Network Hierarchy</strong> and you should see that the <strong>EAST-REGION and WEST-REGION </strong>have been pre-configured.  </li>
 </ul>
 <p><img alt="" src="../pic/task2-2-1.png" /></p>
 <h3 id="step-3-provision-controllers-for-regions"><strong>Step 3: Provision Controllers for Regions</strong></h3>
 <p>In MRF, vSmart controller is assigned to specific region. Based on the size of the deployment, the vSmart controller can be dedicated for a region or for a group of regions. For this lab, you will have controllers assigned as shown below:  </p>
-<pre><code>a.  Controller-1 (1.1.1.3) as dedicated Controller for WEST-REGION (1).  
-b.  Controller-2 (1.1.1.4) as dedicated Controller for EAST-REGION (2).  
-c.  Controller-3 (1.1.1.5) as dedicated Controller for the Core Region (0).  
-d.  Controller-4 (1.1.1.6) is the default/flat existing Controller serving the whole overlay.
+<pre><code>* Controller-1 (1.1.1.3) as dedicated Controller for WEST-REGION (1).  
+* Controller-2 (1.1.1.4) as dedicated Controller for EAST-REGION (2).  
+* Controller-3 (1.1.1.5) as dedicated Controller for the Core Region (0).  
+* Controller-4 (1.1.1.6) is the default/flat existing Controller serving the whole overlay.
 </code></pre>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>The controllers have been pre-configured for this lab. This section is for your review of the workflow</p>
+</div>
 <ul>
 <li>
 <p>In this lab, the controller is assigned to the region by configuring <strong>Region ID List</strong> on controller System feature template. </p>

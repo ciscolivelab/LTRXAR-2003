@@ -679,8 +679,11 @@
 <p><img alt="" src="../pic/task6-2-8.png" />  </p>
 <p>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on all East Edge routers.  </p>
 <h3 id="step-3-re-purpose-default-controller"><strong>Step 3: Re-purpose default controller</strong></h3>
-<p>After disable migration mode on all border and Edge devices, the default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> is no longer peering with any device. In this step, you will re-purpose reposition this controller to the Core region for redundancy.<br />
-<span style="background-color:yellow"> <strong>Note: This is optional task</strong> </span>  </p>
+<p>After disable migration mode on all border and Edge devices, the default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> is no longer peering with any device. In this step, you will re-purpose reposition this controller to the Core region for redundancy.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is optional task.</p>
+</div>
 <ul>
 <li>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>, look up for the device template of controller for core region <strong>CONTROLLER-3_DT</strong> and <strong>Attach Devices</strong>.  </li>
 </ul>
@@ -695,7 +698,10 @@
 <p><img alt="" src="../pic/task6-3-3.png" />  </p>
 <h3 id="step-4-de-active-current-centralized-policy"><strong>Step 4: De-active current Centralized Policy</strong></h3>
 <p>As MRF by default makes inte-region connections via core region, the centralized policy configured in flat fabric becomes unnecessary. Let's deactive the current centralized policy and remove the BGP core between borders.  </p>
-<p><span style="background-color:yellow"> <strong>Note: In this lab, no service in the core region hence you will remove the service VPN and BGP in core region.</strong> </span>    </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this lab, no service in the core region hence you will remove the service VPN and BGP in core region.   </p>
+</div>
 <p>Go to <strong>Configuration &gt; Policies</strong> and deactivate the current active Centralized Policy <strong>OMP_CORE_TLOCS_POLICY</strong>  </p>
 <p>Click <strong>Deactivate</strong> and <strong>Deactivate</strong> once again.  </p>
 <p><img alt="" src="../pic/task6-4-1.png" />  </p>
@@ -704,7 +710,10 @@
 <p>Scroll to the right and mark the checkbox or click on the three dots to shut down the <strong>VPN-10_CHILD_IF-1</strong> interfaces on both Border Routers <strong>BR-WEST-1</strong> and <strong>BR-WEST-2</strong>.  </p>
 <p>Click <strong>Next</strong> and then <strong>Configure Devices</strong>.  </p>
 <p><img alt="" src="../pic/task6-4-3.png" />  </p>
-<p><span style="background-color:yellow"> <strong> Note: Repeat the same process for </strong>cEDGE_SITE-202_DT<strong> Device Template to shutdown VPN 10 interfaces on </strong>BR-EAST-1<strong> and </strong>BR-EAST-2<strong>. </strong> </span>      </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Repeat the same process for <strong>cEDGE_SITE-202_DT</strong> Device Template to shutdown VPN 10 interfaces on <strong>BR-EAST-1</strong> and <strong>BR-EAST-2</strong>.      </p>
+</div>
 <p>Now, Let's verify the connectivity between <strong>Site 3000</strong> and <strong>Site 6000</strong> from Ubuntu VM and check the path from traceroute.  </p>
 <p>Open <strong>mRemoteNG</strong> RDP to host <strong>Site-3000-VPN-10-Ubun</strong>. Ping and trace the Ubuntu host located in <strong>Site 6000</strong> with IP <strong>10.60.1.101</strong>  </p>
 <p>As we can see below, both are still reachable and the traffic is still going through the Fabric we created in the Core, but now without a such complex Control Policy.  </p>

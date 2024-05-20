@@ -722,8 +722,11 @@
 <p><img alt="" src="../pic/task7-1-1.png" /> </p>
 <p>Select the ‘Region’ Type and name it as <strong>SECONDARY-REGION</strong></p>
 <p><img alt="" src="../pic/task7-1-2.png" /> </p>
-<p>Click ‘Add’.</p>
-<p><span style="background-color:yellow"> <strong>Note. As with the primary West and East Region, now this Secondary region has been assigned with the Region ID 3 automatically by the system</strong> </span></p>
+<p>Click ‘Add’.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As with the primary West and East Region, now this Secondary region has been assigned with the Region ID 3 automatically by the system.</p>
+</div>
 <h3 id="step-2-create-transport-interface-feature-templates-with-secondary-region"><strong>Step 2: Create Transport Interface Feature Templates with Secondary Region</strong></h3>
 <p>Now, go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_PUB-INET_IF_FT</strong> feature template and click 'Copy' to clone it.</p>
 <p><img alt="" src="../pic/task7-2-1.png" /> </p>
@@ -755,9 +758,15 @@
 <p><img alt="" src="../pic/task7-3-2.png" /></p>
 <p>Now go to the ‘Best Path’ section, and make Global on to enable the <strong>Ignore Region-Path Length During Best-Path Algorithm</strong> parameter, then click ‘update’. </p>
 <p><img alt="" src="../pic/task7-3-3.png" /></p>
-<p>Click 'Update'.</p>
-<p><span style="background-color:yellow"> <strong>Note: The default value is Off, and by default, OMP gives preference to a direct tunnel path over a hierarchical path because the direct path has fewer hops</strong> </span></p>
-<p><span style="background-color:yellow"> <strong>With this configuration, we disable the comparison of the number of hops, OMP applies equal-cost multi-path routing (ECMP) to all routes, and packets can use all available paths.</strong> </span></p>
+<p>Click 'Update'.  </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The default value is Off, and by default, OMP gives preference to a direct tunnel path over a hierarchical path because the direct path has fewer hops.  </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>With this configuration, we disable the comparison of the number of hops, OMP applies equal-cost multi-path routing (ECMP) to all routes, and packets can use all available paths.</strong>  </p>
+</div>
 <h3 id="step-4-create-a-system-feature-template-with-secondary-region-for-site-5000"><strong>Step 4: Create a System Feature Template with Secondary Region for Site 5000</strong></h3>
 <p>Let’s clone the <strong>Cisco System</strong> Feature template currently used by the <strong>Site 5000</strong> edge router to participate in the secondary. So, go <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and click ‘Copy’</p>
 <p>Name it as <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong>.</p>

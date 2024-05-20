@@ -657,7 +657,7 @@
 
   <h1>Task 3 - Enable Migration Mode on Edge Routers</h1>
 
-<p>In this task we are going to enable Migration Mode on all Edge devices</p>
+<p>In this task you are going to enable Migration Mode on all Edge devices.</p>
 <h3 id="step-1-create-new-systen-feature-template-for-west-edge-devices"><strong>Step 1: Create new Systen Feature Template for West Edge Devices</strong></h3>
 <p>Go to <strong>Configuration &gt; Templates &gt; Feature templates &gt; Add Template</strong>, select C8000v and Cisco System.</p>
 <p><img alt="" src="../pic/task3-1-1.png" /></p>
@@ -672,8 +672,8 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-</div>
 <p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</p>
+</div>
 <p><img alt="" src="../pic/task3-1-2.png" /></p>
 <h3 id="step-2-assign-feature-template-to-west-edge-devices"><strong>Step 2: Assign Feature Template to West Edge Devices</strong></h3>
 <p>Assign the previous created System Feature template named <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> to all West sites and therefore to their proper Device Templates, being:</p>
@@ -695,8 +695,8 @@
 <p>Finally click ‘Configure Devices’ to push the new configuration.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Apply the same new feature template to <strong>cEDGE_SITE-3000_DT</strong>, <strong>cEDGE_SITE-4000_DT</strong> and <strong>cEDGE_SITE-5000_DT</strong>.</p>
 </div>
-<p>Don’t forget to apply the same new feature template to cEDGE_SITE-3000_DT, cEDGE_SITE-4000_DT and cEDGE_SITE-5000_DT.</p>
 <h3 id="step-3-validate-defaultflat-controller"><strong>Step 3: Validate default/flat Controller</strong></h3>
 <p>Now in Manager UI, go to <strong>Monitor &gt; Devices &gt; EDGE-BRANCH-3-01 &gt; Real Time</strong> and look up for <strong>OMP Peers</strong> in the search bar.</p>
 <p>As you can see the <strong>EDGE-BRANCH-3-01</strong> has just 1 OMP peer, one with <strong>Controller-4 (1.1.1.6)</strong> that serves as default/flat Controller for the whole overlay. Pay special attention to the <strong>Region ID</strong> as ‘None’, as this will change in Task 7.</p>
@@ -718,8 +718,8 @@
 <p>Click 'Save'.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-</div>
 <p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</p>
+</div>
 <h3 id="step-5-assign-feature-template-to-east-edge-devices"><strong>Step 5: Assign Feature Template to East Edge Devices</strong></h3>
 <p>Assign the previous created System Feature template named <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> to all West sites and therefore to their proper Device Templates, being:</p>
 <ul>
@@ -735,8 +735,8 @@
 <p><img alt="" src="../pic/task3-5-4.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Apply the same new feature template to <strong>cEDGE_SITE-7000_DT</strong>.</p>
 </div>
-<p>Don’t forget to apply the same new feature template to cEDGE_SITE-7000_DT.</p>
 
 
 

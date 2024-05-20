@@ -718,13 +718,17 @@
 <p>Now in Manager UI, go to <strong>Monitor &gt; Devices &gt; EDGE-BRANCH-3-01 &gt; Real Time</strong> and look up for <strong>OMP Peers</strong> in the search bar.</p>
 </li>
 <li>
-<p>As you can see the <strong>EDGE-BRANCH-3-01</strong> has just 1 OMP peer, one with <strong>Controller-4 (1.1.1.6)</strong> that serves as default/flat Controller for the entire overlay. Pay special attention to the <strong>Region ID</strong> as ‘None’, as this will change in Task 7.</p>
+<p>As you can see the <strong>EDGE-BRANCH-3-01</strong> has only one OMP peer, which is with <strong>Controller-4 (1.1.1.6)</strong> serving as default/flat Controller for the entire overlay. Note that the <strong>Region ID</strong> is ‘None’; this will change in Task 7.</p>
 </li>
 </ul>
 <p><img alt="" src="../pic/task3-3-1.png" /></p>
 <h3 id="step-4-create-new-systen-feature-template-for-east-edge-devices"><strong>Step 4: Create new Systen Feature Template for East Edge Devices</strong></h3>
-<p>Go to <strong>Configuration &gt; Templates &gt; Feature templates &gt; Add Template</strong>, select C8000v and Cisco System.</p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates &gt; Add Template</strong>, select C8000v and Cisco System.</li>
+</ul>
 <p><img alt="" src="../pic/task3-4-1.png" /></p>
+<ul>
+<li>
 <p>Name it as <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong> and define only the next parameters as follows:</p>
 <ul>
 <li>Location: “Device Specific”</li>
@@ -734,8 +738,10 @@
 <li>Latitude: “Device Specific”</li>
 <li>Longitude: “Device Specific”</li>
 </ul>
+</li>
+</ul>
 <p><img alt="" src="../pic/task3-4-2.png" />
-<img alt="" src="../pic/task3-4-3.png" /></p>
+<img alt="" src="../pic/task3-4-3b.png" /></p>
 <p>Click 'Save'.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

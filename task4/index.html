@@ -833,21 +833,36 @@
 <p class="admonition-title">Info</p>
 <p>You can look the packet loss % of ping test running on the Ubuntu <strong>Site-3000-VPN-10-Ubun</strong> host in <strong>Site 3000</strong> </p>
 </div>
+<p>(<em> Repeat the same process to disable draft mode for </em><em>EDGE_SITE-202_DT</em>*.  )</p>
 <ul>
-<li>Repeat the same process to disable draft mode for <strong>EDGE_SITE-202_DT</strong>.  </li>
+<li>Verify the new OMP Peers on borders.  </li>
+<li>
+<p>Go to <strong>Monitor &gt; Devices &gt; BR-WEST-1 &gt; Real Time</strong> and look up for OMP Peers in the search bar.</p>
+</li>
+<li>
+<p>Because of the previous configurations on west hubs, you can see OMP session to <strong>Controller-1 (1.1.1.3)</strong> for <strong>WEST-REGION (1)</strong>, <strong>Controller-3 (1.1.1.5)</strong> for <strong>Core Region (0)</strong>  and the default/flat <strong>Controller-4 (1.1.1.6)</strong> that is being used for Migration.  </p>
+</li>
 </ul>
-<p>Now go to <strong>Monitor &gt; Devices &gt; BR-WEST-1 &gt; Real Time</strong> and look up for OMP Peers in the search bar.</p>
-<p>Thanks to the previous configurations on west hubs, we have now OMP session to <strong>Controller-1 (1.1.1.3)</strong> that owns <strong>WEST-REGION (1)</strong>, <strong>Controller-3 (1.1.1.5)</strong> that owns the <strong>Core Region (0)</strong>  and the default/flat <strong>Controller-4 (1.1.1.6)</strong> being used for Migration.</p>
 <p><img alt="" src="../pic/task4-5-2.png" /></p>
-<p>Also, take a look to any of the East Border devices like <strong>BR-EAST-1</strong> and you will see a similar OMP peering with the exception of the  <strong>Controller-2 (1.1.1.4)</strong> that serves the <strong>EAST-REGION (2)</strong></p>
-<p><img alt="" src="../pic/task4-5-3.png" /></p>
-<p>Now modify the Centralized Control Policy to allow the Border routers, to receive the Private1 TLOCs of each other and therefore, to create a fabric on the Core Region.</p>
-<p>Hence, go to <strong>Configuration &gt; Policies</strong> and activate the pre-configured <strong>OMP_CORE_TLOCS_POLICY</strong> Centralized Policy.</p>
+<ul>
+<li>Verify East Border devices, such as <strong>BR-EAST-1</strong> and you will see a similar OMP peering with the exception of the  <strong>Controller-2 (1.1.1.4)</strong> that serves the <strong>EAST-REGION (2)</strong>. </li>
+</ul>
+<p><img alt="" src="../pic/task4-5-3.png" />  </p>
+<ul>
+<li>
+<p>Now modify the Centralized Control Policy to allow the Border routers to receive the Private1 TLOCs of each other. This creates a fabric for the Core Region.  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Policies</strong> and activate the pre-configured <strong>OMP_CORE_TLOCS_POLICY</strong> Centralized Policy.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task4-5-4.png" /></p>
-<p>Click ‘Activate’.</p>
+<ul>
+<li>Click ‘Activate’.</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Analyze this Centralized Policy we just activated, where we now advertise the Core Private1 TLOCs to the between the Border routers, besides its respective Regional Hub &amp; Spoke logic.</p>
+<p>Review the Centralized Policy you just activated, where you now advertise the Core Private1 TLOCs between Border routers, besides its respective Regional Hub &amp; Spoke logic.</p>
 </div>
 
 

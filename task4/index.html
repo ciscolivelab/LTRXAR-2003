@@ -664,31 +664,55 @@
 </div>
 <p><img alt="" src="../pic/task4-0-1.png" /></p>
 <h3 id="step-1-enable-draft-mode-on-all-border-routers"><strong>Step 1: Enable "Draft Mode" on all Border Routers</strong></h3>
-<p>Because this task requires multiple feature templates changes on the Border routers, we are going to enable “Draft Mode” on all Border routers on <strong>Site 201</strong> and <strong>202</strong>. This will diminish the impact of the change, otherwise it may cause a mayor disruption.</p>
-<p>Having said that, go to <strong>Configuration &gt; Templates</strong> and enable “Draft Mode” on both <strong>cEDGE_SITE-201_DT</strong> and <strong>EDGE_SITE-202_DT</strong> device templates as follows.</p>
+<p>Because this task requires multiple feature templates changes on the Border routers, we are going to enable “Draft Mode” on all Border routers on <strong>Site 201</strong> and <strong>Site 202</strong>. This will diminish the impact of the change, otherwise it may cause a mayor disruption.</p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates</strong> and enable “Draft Mode” on both <strong>cEDGE_SITE-201_DT</strong> and <strong>EDGE_SITE-202_DT</strong> device templates as follows.</li>
+</ul>
 <p><img alt="" src="../pic/task4-1-1.png" /></p>
 <p><img alt="" src="../pic/task4-1-2.png" /></p>
 <h2 id="step-2-apply-bgp-migration-community"><strong>Step 2: Apply BGP Migration Community</strong></h2>
-<p>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong>, look up for the <strong>cEDGE_HUB_VPN-10_BGP_FT</strong> feature template and edit it.</p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong>, look up for the <strong>cEDGE_HUB_VPN-10_BGP_FT</strong> feature template and edit it.</li>
+</ul>
 <p><img alt="" src="../pic/task4-2-1.png" /></p>
-<p>First, make ‘Propagate Community’ Global on as shown below.</p>
+<ul>
+<li>Make ‘Propagate Community’ Global on as shown below.</li>
+</ul>
 <p><img alt="" src="../pic/task4-2-2.png" /></p>
-<p>Next, go to ‘Unicast Address Family’ and click on the little pencil to edit the OMP redistribution</p>
+<p>*Under ‘Unicast Address Family’, click on pencil icon to edit the OMP redistribution</p>
 <p><img alt="" src="../pic/task4-2-3.png" /></p>
-<p>Add <strong>MATCH-MIG-COMM</strong> as the Route Policy.</p>
+<ul>
+<li>Add <strong>MATCH-MIG-COMM</strong> as the Route Policy.</li>
+</ul>
 <p><img alt="" src="../pic/task4-2-4.png" /></p>
+<ul>
+<li>
 <p>Click 'Save Changes'.</p>
-<p>Now go to the ‘Neighbor’ section and click on the little pencil icon to edit it.</p>
+</li>
+<li>
+<p>Now under the ‘Neighbor’ section and click on the pencil icon to edit it.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task4-2-5.png" /></p>
-<p>Then make ‘Route Policy Out’ Global on and in the ‘Policy Name’ field paste the route policy <strong>APPEND-MIG-COMM</strong> that was pre-configured on the localized policy for simplicity.</p>
+<ul>
+<li>Make ‘Route Policy Out’ Global "on" to enable out bound route policy. In the ‘Policy Name’ field enter route policy <strong>APPEND-MIG-COMM</strong> which is pre-configured on the localized policy for simplicity.</li>
+</ul>
 <p><img alt="" src="../pic/task4-2-6.png" /></p>
-<p>Finally, click ‘Save Changes’, ‘Update’ then ‘Next’ and then ‘Configure Devices’ to generate the draft configurations for all East and West border routers.</p>
+<ul>
+<li>Click ‘Save Changes’, ‘Update’ then ‘Next’ and then ‘Configure Devices’ to generate the draft configurations for all four East and West border routers.</li>
+</ul>
 <p><img alt="" src="../pic/task4-2-7.png" /></p>
-<p>You must see these status and messages for the draft configuration generated for all 4 devices.</p>
+<ul>
+<li>You should see these status and messages for the draft configuration generated for all 4 devices.</li>
+</ul>
 <p><img alt="" src="../pic/task4-2-8.png" /></p>
 <h2 id="step-3-configure-mrf-on-west-border-routers"><strong>Step 3: Configure MRF on WEST Border Routers</strong></h2>
-<p>Go to <strong>Configuration &gt; Templates &gt; Feature</strong> and create a new C8000v ‘Cisco System’ feature template and name it <strong>cEDGE_BORDER-WEST-201_SYSTEM_FT</strong></p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong> and create a new C8000v ‘Cisco System’ feature template and name it <strong>cEDGE_BORDER-WEST-201_SYSTEM_FT</strong></li>
+</ul>
 <p><img alt="" src="../pic/task4-3-1.png" /></p>
+<ul>
+<li>
 <p>Define all the next parameters as follows:</p>
 <ul>
 <li>Location: “Device Specific”</li>
@@ -700,24 +724,46 @@
 <li>Latitude: “Device Specific”</li>
 <li>Longitude: “Device Specific”</li>
 </ul>
+</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.  </p>
 </div>
-<p><img alt="" src="../pic/task4-3-2.png" /></p>
-<p><img alt="" src="../pic/task4-3-3.png" /></p>
+<p><img alt="" src="../pic/task4-3-2.png" /><br />
+<img alt="" src="../pic/task4-3-3b.png" /></p>
+<ul>
+<li>
 <p>Click ‘Save’.</p>
+</li>
+<li>
 <p>In Device Templates look up for the <strong>cEDGE_SITE-201_DT</strong> device template and click on edit</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task4-3-4.png" /></p>
-<p>In the ‘System’ section now select the <strong>cEDGE_BORDER-WEST-201_SYSTEM_FT</strong> we previously created, then click ‘update’ and push the change. This will configure <strong>BR-WEST-1</strong> and <strong>BR-WEST-2</strong> as the border routers role facing the <strong>WEST-REGION</strong>.</p>
+<ul>
+<li>In the ‘System’ section now select the <strong>cEDGE_BORDER-WEST-201_SYSTEM_FT</strong> we previously created, then click ‘update’ and push the change.  </li>
+<li>This will configure <strong>BR-WEST-1</strong> and <strong>BR-WEST-2</strong> as the border routers role facing the <strong>WEST-REGION</strong>.</li>
+</ul>
 <p><img alt="" src="../pic/task4-3-5.png" /></p>
-<p>Click ‘Update’, then ‘Next’ and confirm in the ‘Config Diff’ section that now both west hubs are assigned to <strong>WEST-REGION (1)</strong>, acting as <strong>Border Routers</strong> and with the migration mode <strong>enabled-from-bgp-core</strong>. Finally click ‘Configure Devices’ to push the changes.</p>
+<ul>
+<li>Click ‘Update’, then ‘Next’ and confirm in the ‘Config Diff’ section that now both west hubs are assigned to <strong>WEST-REGION (1)</strong>, acting as <strong>Border Routers</strong> and with the migration mode <strong>enabled-from-bgp-core</strong>.  </li>
+<li>Finally click ‘Configure Devices’ to push the changes.</li>
+</ul>
 <p><img alt="" src="../pic/task4-3-6.png" /></p>
-<p>Again, because the <strong>cEDGE_SITE-201_DT</strong> device template is still in draft mode, it won’t make any change until we disable draft mode.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Because the <strong>cEDGE_SITE-201_DT</strong> device template is still in draft mode, it won’t make any change until we disable draft mode.</p>
+</div>
 <h2 id="step-4-configure-mrf-on-east-border-routers"><strong>Step 4: Configure MRF on EAST Border Routers</strong></h2>
-<p>Now, let’s repeat the same process but now for the East Border routers. Therefore, go to <strong>Configuration &gt; Templates &gt; Feature</strong> and create a new C8000v ‘Cisco System’ feature template and name it <strong>cEDGE_BORDER-EAST-202_SYSTEM_FT</strong>.</p>
+<p>Now, let’s repeat the same process for the East Border routers.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Template</strong>, create a new C8000v ‘Cisco System’ feature template and name it <strong>cEDGE_BORDER-EAST-202_SYSTEM_FT</strong>.</li>
+</ul>
 <p><img alt="" src="../pic/task4-4-1.png" /></p>
-<p>Define all the next parameters as follows:</p>
+<ul>
+<li>
+<p>Define all the parameters as follows:</p>
 <ul>
 <li>Location: “Device Specific”</li>
 <li>Console Baud Rate: 115200</li>
@@ -728,28 +774,55 @@
 <li>Latitude: “Device Specific”</li>
 <li>Longitude: “Device Specific”</li>
 </ul>
+</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.  </p>
 </div>
-<p><img alt="" src="../pic/task4-4-2.png" /></p>
-<p><img alt="" src="../pic/task4-4-3.png" /></p>
-<p>In Device Templates look up for the <strong>cEDGE_SITE-202_DT</strong> device template and click on ‘edit’</p>
+<p><img alt="" src="../pic/task4-4-2.png" /><br />
+<img alt="" src="../pic/task4-4-3b.png" /></p>
+<ul>
+<li>In Device Templates look up for the <strong>cEDGE_SITE-202_DT</strong> device template and click on ‘edit’</li>
+</ul>
 <p><img alt="" src="../pic/task4-4-4.png" /></p>
-<p>In the ‘System’ section now select the <strong>cEDGE_BORDER-EAST-202_SYSTEM_FT</strong> we previously created. This will configure <strong>BR-EAST-1</strong> and <strong>BR-EAST-2</strong> as the border routers role facing the <strong>EAST-REGION</strong>.</p>
+<ul>
+<li>In the ‘System’ section now select the <strong>cEDGE_BORDER-EAST-202_SYSTEM_FT</strong> we previously created. This will configure <strong>BR-EAST-1</strong> and <strong>BR-EAST-2</strong> as the border routers role facing the <strong>EAST-REGION</strong>.</li>
+</ul>
 <p><img alt="" src="../pic/task4-4-5.png" /></p>
-<p>Click ‘Update’, then ‘Next’ and confirm in the ‘Config Diff’ section that now both East hubs are assigned to <strong>EAST-REGION (2)</strong>, acting as <strong>Border Routers</strong> and with the migration mode <strong>enabled-from-bgp-core</strong>. Finally click ‘Configure Devices’ to push the changes.</p>
+<ul>
+<li>Click ‘Update’, then ‘Next’ and confirm in the ‘Config Diff’ section that now both west hubs are assigned to <strong>EAST-REGION (2)</strong>, acting as <strong>Border Routers</strong> and with the migration mode <strong>enabled-from-bgp-core</strong>.  </li>
+<li>Finally click ‘Configure Devices’ to push the changes.</li>
+</ul>
 <p><img alt="" src="../pic/task4-4-6.png" /></p>
-<p>Again, because the <strong>cEDGE_SITE-202_DT</strong> device template is still in draft mode, it won’t make any until we disable draft mode.</p>
-<p>Now, enable the Private1 TLOC as Core transport for all Border devices,  therefore go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the feature template <strong>cEDGE_SITE-20X_VPN-0_PRIVATE1_CHILD-IF_FT</strong> that is shared by all Border devices, and edit it.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Because the <strong>cEDGE_SITE-202_DT</strong> device template is still in draft mode, it won’t make any change until we disable draft mode.  </p>
+</div>
+<ul>
+<li>Next enable the <strong>Private1</strong> TLOC as Core transport on all Border devices.  </li>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong>; look up for the feature template <strong>cEDGE_SITE-20X_VPN-0_PRIVATE1_CHILD-IF_FT</strong> which is shared by all Border devices, and edit it.  </li>
+</ul>
 <p><img alt="" src="../pic/task4-4-7.png" /></p>
-<p>Next, under the ‘Tunnel’ section, scroll down and under ‘advance options’ make Global on  the ‘Enable Core Region’ parameter.</p>
+<p>*Under the ‘Tunnel’ section, scroll down and under ‘advance options’ make Global on  the ‘Enable Core Region’ parameter.</p>
 <p><img alt="" src="../pic/task4-4-8.png" /></p>
-<p>Then, click ‘Update’, ‘Next’ and ‘Configure Devices’. By doing this, we have enabled the Private1 Core TLOCs to service the Core Region.</p>
+<ul>
+<li>Click ‘Update’, ‘Next’ and ‘Configure Devices’. This enables Private1 TLOC to service the Core Region.</li>
+</ul>
 <p><img alt="" src="../pic/task4-4-9.png" /></p>
-<p>Finally click ‘Configure Devices’, and again, because all Border routers are in “Draft Mode”, it won’t make any change until we disable draft mode.</p>
+<ul>
+<li>Finally click ‘Configure Devices’ to push configuration change. Because all Border routers are in “Draft Mode”, it won’t make any change until we disable draft mode.</li>
+</ul>
 <h2 id="step-5-disable-draft-mode-and-modify-control-policy"><strong>Step 5: Disable “Draft Mode” and Modify Control Policy</strong></h2>
-<p>Go to Configuration &gt; Templates and click ‘Disable Draft Mode” on both cEDGE_SITE-201_DT and EDGE_SITE-202_DT to push all previous configs we have done on from step 1 to 4, as follows.</p>
+<ul>
+<li>Click <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" /> on your desktop, select <strong>Site-3000-VPN-10-Ubun</strong> and open RDP session to the host with password <strong>C1sco12345</strong>. Run ping to Ubuntu host in Site 6000 with IP <strong>10.60.1.101</strong>.  </li>
+<li>
+<p>Leave the ping running for connectivity test to measure the impact for this change.  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates</strong> and click ‘Disable Draft Mode” for <strong>cEDGE_SITE-201_DT</strong> and <strong>EDGE_SITE-202_DT</strong> to push all configs you did in step 1 to 4.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task4-5-1.png" /></p>
 <p>Then click ‘Disable” on the pop-up window, then ‘Next’ and finally click ‘Configure Devices’ to push all changes</p>
 <div class="admonition note">
@@ -758,9 +831,11 @@
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>You can look at the packet loss % on the  Ubuntu <strong>Site-3000-VPN-10-Ubun</strong> host in <strong>Site 3000</strong> using the RDP  with the mRemoteNG client and the ping and trace we left running since task 1 to the IP <strong>10.60.1.101</strong></p>
+<p>You can look the packet loss % of ping test running on the Ubuntu <strong>Site-3000-VPN-10-Ubun</strong> host in <strong>Site 3000</strong> </p>
 </div>
-<p>Repeat the exact same process <strong>but not for EDGE_SITE-202_DT</strong>.</p>
+<ul>
+<li>Repeat the same process to disable draft mode for <strong>EDGE_SITE-202_DT</strong>.  </li>
+</ul>
 <p>Now go to <strong>Monitor &gt; Devices &gt; BR-WEST-1 &gt; Real Time</strong> and look up for OMP Peers in the search bar.</p>
 <p>Thanks to the previous configurations on west hubs, we have now OMP session to <strong>Controller-1 (1.1.1.3)</strong> that owns <strong>WEST-REGION (1)</strong>, <strong>Controller-3 (1.1.1.5)</strong> that owns the <strong>Core Region (0)</strong>  and the default/flat <strong>Controller-4 (1.1.1.6)</strong> being used for Migration.</p>
 <p><img alt="" src="../pic/task4-5-2.png" /></p>

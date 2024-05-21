@@ -529,6 +529,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#congratulations-you-have-fully-migrated-your-overlay-from-a-regional-hub-spoke-using-control-policy-to-a-multi-region-fabric-without-control-policy" class="md-nav__link">
+    Congratulations, you have fully migrated your overlay from a Regional Hub &amp; Spoke using Control Policy to a Multi-Region Fabric without Control Policy.
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -624,6 +631,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#congratulations-you-have-fully-migrated-your-overlay-from-a-regional-hub-spoke-using-control-policy-to-a-multi-region-fabric-without-control-policy" class="md-nav__link">
+    Congratulations, you have fully migrated your overlay from a Regional Hub &amp; Spoke using Control Policy to a Multi-Region Fabric without Control Policy.
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -639,45 +653,91 @@
                   
 
 
-  <h1>Task 6 - MRF Migration Clean Up</h1>
-
 <p>Now that you have all Edge and Border peered with regional controllers, and completed the MRF migration. In this task you will clean up the temporary policy and migration mode.  </p>
 <h3 id="step-1-remove-route-map"><strong>Step 1: Remove route-map</strong></h3>
-<p>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_HUB_VPN-10_BGP_FT</strong> and edit to remove route-map you completed in task 4.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_HUB_VPN-10_BGP_FT</strong> and edit to remove route-map you completed in task 4.  </li>
+</ul>
 <p><img alt="" src="../pic/task6-1-1.png" />  </p>
-<p>Under <strong>UNICAST ADDRESS FAMILY</strong>, click pencil to edit the OMP redistribution policy.  </p>
+<ul>
+<li>Under <strong>UNICAST ADDRESS FAMILY</strong>, click pencil to edit the OMP redistribution policy.  </li>
+</ul>
 <p><img alt="" src="../pic/task6-1-2.png" />  </p>
-<p>Remove associated the route policy by changing it to default, and <strong>Save Changes</strong>  </p>
+<ul>
+<li>Remove associated the route policy by changing it to default, and <strong>Save Changes</strong>  </li>
+</ul>
 <p><img alt="" src="../pic/task6-1-3.png" />  </p>
-<p>Under <strong>NEIGHBOR</strong> section, click pencil to edit the policy associate the BGP neighbor.  </p>
+<ul>
+<li>Under <strong>NEIGHBOR</strong> section, click pencil to edit the policy associate the BGP neighbor.  </li>
+</ul>
 <p><img alt="" src="../pic/task6-1-4.png" />  </p>
-<p>Remove associated outbound route policy by changing <strong>Route Policy Out</strong> to <strong>Off</strong>.  </p>
+<ul>
+<li>Remove associated outbound route policy by changing <strong>Route Policy Out</strong> to <strong>Off</strong>.  </li>
+</ul>
 <p><img alt="" src="../pic/task6-1-5.png" />  </p>
-<p>Click <strong>Save Changes</strong> then <strong>Update</strong> to trigger the configuration change. Click <strong>Configure Devices</strong> to remove the loop prevention BGP route policy you applied on task 4 on all 4 Border Routers.  </p>
+<ul>
+<li>Click <strong>Save Changes</strong> then <strong>Update</strong> to trigger the configuration change. Click <strong>Configure Devices</strong> to remove the loop prevention BGP route policy you applied on task 4 on all 4 Border Routers.  </li>
+</ul>
 <h3 id="step-2-disable-migration-mode"><strong>Step 2: Disable Migration Mode</strong></h3>
-<p>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_BORDER-WEST-201_SYSTEM_FT</strong> and edit it.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_BORDER-WEST-201_SYSTEM_FT</strong> and edit it.  </li>
+</ul>
 <p><img alt="" src="../pic/task6-2-1.png" />  </p>
-<p>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the West Border router will keepthe OMP session to West Region aware <strong>controller-1 (1.1.1.3)</strong>, and the Core region <strong>Controller-3 (1.1.1.5)</strong>, but will remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </p>
+<ul>
+<li>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the West Border router will keepthe OMP session to West Region aware <strong>controller-1 (1.1.1.3)</strong>, and the Core region <strong>Controller-3 (1.1.1.5)</strong>, but will remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </li>
+</ul>
 <p><img alt="" src="../pic/task6-2-2.png" />  </p>
+<ul>
+<li>
 <p>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on both West Border routers.</p>
-<p>Repeat the same process to disable <strong>Migration Mode </strong>for East Border routers.</p>
+</li>
+<li>
+<p>Repeat the same process to disable <strong>Migration Mode</strong> for East Border routers.</p>
+</li>
+<li>
 <p>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_BORDER-EAST-202_SYSTEM_FT</strong> and edit it.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task6-2-3.png" />  </p>
-<p>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the East Border router will keepthe OMP session to West Region aware <strong>controller-2 (1.1.1.4)</strong>, and the Core region <strong>Controller-3 (1.1.1.5)</strong>, but will remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </p>
+<ul>
+<li>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the East Border router will keepthe OMP session to West Region aware <strong>controller-2 (1.1.1.4)</strong>, and the Core region <strong>Controller-3 (1.1.1.5)</strong>, but will remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </li>
+</ul>
 <p><img alt="" src="../pic/task6-2-4.png" />  </p>
+<ul>
+<li>
 <p>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on both East Border routers.</p>
-<p>Repeat the same process to disable <strong>Migration Mode </strong>for West Edge routers.  </p>
+</li>
+<li>
+<p>Repeat the same process to disable <strong>Migration Mode</strong> for West Edge routers.  </p>
+</li>
+<li>
 <p>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and edit it.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task6-2-5.png" />  </p>
-<p>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the West Region Edge devices will keep the OMP session to West Region aware <strong>controller-1 (1.1.1.3)</strong>, and remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </p>
+<ul>
+<li>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the West Region Edge devices will keep the OMP session to West Region aware <strong>controller-1 (1.1.1.3)</strong>, and remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </li>
+</ul>
 <p><img alt="" src="../pic/task6-2-6.png" />  </p>
+<ul>
+<li>
 <p>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on all West Edge routers.   </p>
+</li>
+<li>
 <p>Repeat the same process to disable <strong>Migration Mode </strong>for East Edge routers.  </p>
+</li>
+<li>
 <p>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong> and edit it.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task6-2-7.png" />  </p>
-<p>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the East Region Edge devices will keep the OMP session to West Region aware <strong>controller-2 (1.1.1.4)</strong>, and remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </p>
+<ul>
+<li>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the East Region Edge devices will keep the OMP session to West Region aware <strong>controller-2 (1.1.1.4)</strong>, and remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </li>
+</ul>
 <p><img alt="" src="../pic/task6-2-8.png" />  </p>
-<p>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on all East Edge routers.  </p>
+<ul>
+<li>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on all East Edge routers.  </li>
+</ul>
 <h3 id="step-3-re-purpose-default-controller"><strong>Step 3: Re-purpose default controller</strong></h3>
 <p>After disable migration mode on all border and Edge devices, the default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> is no longer peering with any device. In this step, you will re-purpose reposition this controller to the Core region for redundancy.  </p>
 <div class="admonition note">
@@ -702,23 +762,46 @@
 <p class="admonition-title">Note</p>
 <p>In this lab, no service in the core region hence you will remove the service VPN and BGP in core region.   </p>
 </div>
+<ul>
+<li>
 <p>Go to <strong>Configuration &gt; Policies</strong> and deactivate the current active Centralized Policy <strong>OMP_CORE_TLOCS_POLICY</strong>  </p>
+</li>
+<li>
 <p>Click <strong>Deactivate</strong> and <strong>Deactivate</strong> once again.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task6-4-1.png" />  </p>
-<p>Shutdown on all Hubs the service VPN 10 interfaces that were used for the BGP core, this will cause now to use the Fabric we created at the Core with the Private1 TLOCs, therefore go to <strong>Configuration &gt; Templates &gt; Device Templates</strong> and look up for <strong>cEDGE_SITE-201_DT</strong> device template and now click on <strong>Change Device Values</strong>.  </p>
+<ul>
+<li>Shutdown on all Hubs the service VPN 10 interfaces that were used for the BGP core, this will cause now to use the Fabric we created at the Core with the Private1 TLOCs, therefore go to <strong>Configuration &gt; Templates &gt; Device Templates</strong> and look up for <strong>cEDGE_SITE-201_DT</strong> device template and now click on <strong>Change Device Values</strong>.  </li>
+</ul>
 <p><img alt="" src="../pic/task6-4-2.png" />  </p>
+<ul>
+<li>
 <p>Scroll to the right and mark the checkbox or click on the three dots to shut down the <strong>VPN-10_CHILD_IF-1</strong> interfaces on both Border Routers <strong>BR-WEST-1</strong> and <strong>BR-WEST-2</strong>.  </p>
+</li>
+<li>
 <p>Click <strong>Next</strong> and then <strong>Configure Devices</strong>.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task6-4-3.png" />  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Repeat the same process for <strong>cEDGE_SITE-202_DT</strong> Device Template to shutdown VPN 10 interfaces on <strong>BR-EAST-1</strong> and <strong>BR-EAST-2</strong>.      </p>
 </div>
 <p>Now, Let's verify the connectivity between <strong>Site 3000</strong> and <strong>Site 6000</strong> from Ubuntu VM and check the path from traceroute.  </p>
+<ul>
+<li>
 <p>Open <strong>mRemoteNG</strong> RDP to host <strong>Site-3000-VPN-10-Ubun</strong>. Ping and trace the Ubuntu host located in <strong>Site 6000</strong> with IP <strong>10.60.1.101</strong>  </p>
+</li>
+<li>
 <p>As we can see below, both are still reachable and the traffic is still going through the Fabric we created in the Core, but now without a such complex Control Policy.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task6-4-4.png" />  </p>
-<p># <strong>Congratulations, you have fully migrated your overlay from a Regional Hub &amp; Spoke using Control Policy to a Multi-Region Fabric without Control Policy.</strong></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<h1 id="congratulations-you-have-fully-migrated-your-overlay-from-a-regional-hub-spoke-using-control-policy-to-a-multi-region-fabric-without-control-policy"><strong>Congratulations, you have fully migrated your overlay from a Regional Hub &amp; Spoke using Control Policy to a Multi-Region Fabric without Control Policy.</strong></h1>
+</div>
 
 
 

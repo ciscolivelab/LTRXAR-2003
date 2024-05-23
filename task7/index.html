@@ -714,51 +714,105 @@
 <p>The Secondary Region is a feature within Multi-Region Fabric that provides a direct path between sites in different regions. Depending on the requirements, this path over 2nd region can serve as primary path between sites in different regions, or backup path or ECMP.  </p>
 <p>In this task you will create a Secondary Region between the <strong>West Site 5000</strong> and the <strong>East Sites 6000</strong> and <strong>7000</strong> as shown in the diagram below.</p>
 <p><img alt="" src="../pic/task7-0-1.png" /> </p>
-<p>First, RDP into the Ubuntu <strong>Site-5000-VPN-10-Ubun</strong> host in <strong>Site 5000</strong> using the mRemoteNG client and the ping and trace the IP <strong>10.60.1.101* that lives in </strong>Site 6000**.</p>
+<ul>
+<li>First, RDP into the Ubuntu <strong>Site-5000-VPN-10-Ubun</strong> host in <strong>Site 5000</strong> using the <strong>mRemoteNG</strong> client and the ping and trace the IP <strong>10.60.1.101</strong> that lives in <strong>Site 6000</strong>.</li>
+</ul>
 <p><img alt="" src="../pic/task7-0-2.png" /> </p>
 <p>As you can see, it is reachable through the Fabric in the Core now.</p>
 <h3 id="step-1-create-secondary-region"><strong>Step 1: Create Secondary Region</strong></h3>
-<p>Create the Secondary Region, therefore go to <strong>Configuration &gt; Network Hierarchy</strong> and in Global click on the 3 dots and select ‘Add Node’.</p>
+<ul>
+<li>Go to <strong>Configuration &gt; Network Hierarchy</strong> and in Global click on <strong>...</strong> and select ‘Add Node’.</li>
+</ul>
 <p><img alt="" src="../pic/task7-1-1.png" /> </p>
-<p>Select the ‘Region’ Type and name it as <strong>SECONDARY-REGION</strong></p>
+<ul>
+<li>Select the <strong>Region</strong> Type and name it as <strong>SECONDARY-REGION</strong></li>
+</ul>
 <p><img alt="" src="../pic/task7-1-2.png" /> </p>
-<p>Click ‘Add’.  </p>
+<ul>
+<li>Click <strong>Add</strong>.  </li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As with the primary West and East Region, now this Secondary region has been assigned with the Region ID 3 automatically by the system.</p>
 </div>
 <h3 id="step-2-create-transport-interface-feature-templates-with-secondary-region"><strong>Step 2: Create Transport Interface Feature Templates with Secondary Region</strong></h3>
-<p>Now, go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_PUB-INET_IF_FT</strong> feature template and click 'Copy' to clone it.</p>
+<p>As you can see from the diagram above, the 2nd region will be enabled over both Piblic-Internet and MPLS transports. In this step, you will build two new feature templates for both transport interfaces with 2nd region enabled.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_PUB-INET_IF_FT</strong> feature template and click 'Copy' to clone it.</li>
+</ul>
 <p><img alt="" src="../pic/task7-2-1.png" /> </p>
-<p>Name it as <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and click ‘Copy’</p>
+<ul>
+<li>Name it as <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and click ‘Copy’</li>
+</ul>
 <p><img alt="" src="../pic/task7-2-2.png" /> </p>
-<p>Now, look up for the template we just cloned named <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and edit it.</p>
+<ul>
+<li>Now, look up for the template you just created <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and edit it.</li>
+</ul>
 <p><img alt="" src="../pic/task7-2-3.png" /> </p>
-<p>Next, go to the ‘Tunnel’ section and under  ‘Advanced Options’, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong> and click ‘update’.</p>
+<ul>
+<li>Go to the <strong>Tunnel</strong> section and under  <strong>‘Advanced Options’</strong>, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong> and click ‘update’.</li>
+</ul>
 <p><img alt="" src="../pic/task7-2-4.png" /> </p>
+<ul>
+<li>
 <p>Click 'Update'.</p>
-<p>Step 4. Again, go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_MPLS_IF_FT</strong> feature template to clone it.</p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_MPLS_IF_FT</strong> feature template to clone it.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task7-2-5.png" /> </p>
-<p>Name it as <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong></p>
+<ul>
+<li>Name it as <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong></li>
+</ul>
 <p><img alt="" src="../pic/task7-2-6.png" /> </p>
+<ul>
+<li>
 <p>Click ‘Copy’.</p>
-<p>Now, look up again for the template we just cloned named <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong> and edit it.</p>
+</li>
+<li>
+<p>Now, look up again for the template you just created <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong> and edit it.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task7-2-8.png" /> </p>
-<p>First, define the <strong>Interface Name</strong> as a variable (this because it will be used for Site7000 that uses a different interface for the MPLS TLOC).</p>
+<ul>
+<li>Define the <strong>Interface Name</strong> as a variable (this because it will be used for Site7000 that uses a different interface for the MPLS TLOC).</li>
+</ul>
 <p><img alt="" src="../pic/task7-2-9.png" /> </p>
-<p>Next, go to the ‘Tunnel’ section and under ‘Advanced Options’, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong></p>
+<ul>
+<li>Go to the <strong>‘Tunnel’</strong> section and under <strong>‘Advanced Options’</strong>, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong></li>
+</ul>
 <p><img alt="" src="../pic/task7-2-10.png" /> </p>
-<p>Click 'Update'.</p>
+<ul>
+<li>Click 'Update'.</li>
+</ul>
 <h3 id="step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm"><strong>Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm</strong></h3>
+<p>By default, the path over 2nd region is prefered <strong>shorter path</strong>, because it provides the direct path for sites in different region. In this step, you will change this default behavior to allow equal cost multi path over direct path and core region path.  </p>
+<ul>
+<li>
 <p>Go to <strong>Configuration &gt; Templates &gt; Feature</strong> and let’s copy now the existing <strong>cEDGE_ALL_OMP_FT</strong> feature template. </p>
+</li>
+<li>
 <p>Name it as <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong></p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task7-3-1.png" /></p>
+<ul>
+<li>
 <p>Click ‘Copy’.</p>
+</li>
+<li>
 <p>Once created it look up for <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> and edit it.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task7-3-2.png" /></p>
-<p>Now go to the ‘Best Path’ section, and make Global on to enable the <strong>Ignore Region-Path Length During Best-Path Algorithm</strong> parameter, then click ‘update’. </p>
+<ul>
+<li>Go to the ‘Best Path’ section, and make Global on to enable the <strong>Ignore Region-Path Length During Best-Path Algorithm</strong> parameter, then click ‘update’. </li>
+</ul>
 <p><img alt="" src="../pic/task7-3-3.png" /></p>
-<p>Click 'Update'.  </p>
+<ul>
+<li>Click 'Update'.  </li>
+</ul>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The default value is Off, and by default, OMP gives preference to a direct tunnel path over a hierarchical path because the direct path has fewer hops.  </p>
@@ -768,16 +822,34 @@
 <p><strong>With this configuration, we disable the comparison of the number of hops, OMP applies equal-cost multi-path routing (ECMP) to all routes, and packets can use all available paths.</strong>  </p>
 </div>
 <h3 id="step-4-create-a-system-feature-template-with-secondary-region-for-site-5000"><strong>Step 4: Create a System Feature Template with Secondary Region for Site 5000</strong></h3>
-<p>Let’s clone the <strong>Cisco System</strong> Feature template currently used by the <strong>Site 5000</strong> edge router to participate in the secondary. So, go <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and click ‘Copy’</p>
-<p>Name it as <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong>.</p>
+<p>In this step, you will update the device templates and enable Secondary Region on Site 5000, Site 6000 and Site 7000. </p>
+<ul>
+<li>
+<p>Modify the <strong>Cisco System</strong> Feature template currently used by the <strong>Site 5000</strong> edge router to participate in the secondary.  </p>
+</li>
+<li>
+<p>Go <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and click <strong>‘Copy’</strong>  </p>
+</li>
+<li>
+<p>Name it as <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong>.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task7-4-1.png" /></p>
-<p>Click ‘Copy’.</p>
+<ul>
+<li>Click ‘Copy’.  </li>
+</ul>
 <p><img alt="" src="../pic/task7-4-2.png" /></p>
-<p>Look up for the <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong> feature template we just created and click ‘Edit’</p>
+<ul>
+<li>Look up for the <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong> feature template you just created and click ‘Edit’  </li>
+</ul>
 <p><img alt="" src="../pic/task7-4-3.png" /></p>
-<p>Make Global on the ‘Secondary Region’ parameter and select <strong>SECONDARY-REGION</strong> from the dropdown menu.</p>
+<ul>
+<li>Make Global on the ‘Secondary Region’ parameter and select <strong>SECONDARY-REGION</strong> from the dropdown menu.</li>
+</ul>
 <p><img alt="" src="../pic/task7-4-4.png" /></p>
-<p>Click ‘Update’ to save the changes.</p>
+<ul>
+<li>Click ‘Update’ to save the changes.</li>
+</ul>
 <h3 id="step-5-update-site-5000-device-template"><strong>Step 5: Update Site 5000 Device Template</strong></h3>
 <p>Next, go to <strong>Configuration &gt; Templates &gt; Device Templates</strong> look up for the <strong>cEDGE_SITE-5000_DT</strong> device template and edit it.</p>
 <p><img alt="" src="../pic/task7-5-1.png" /></p>

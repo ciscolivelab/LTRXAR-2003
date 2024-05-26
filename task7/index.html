@@ -537,36 +537,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-create-a-system-feature-template-with-secondary-region-for-site-5000" class="md-nav__link">
-    Step 4: Create a System Feature Template with Secondary Region for Site 5000
+  <a href="#step-4-enable-secondary-region-for-site-5000" class="md-nav__link">
+    Step 4: Enable Secondary Region for Site 5000
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-update-site-5000-device-template" class="md-nav__link">
-    Step 5: Update Site 5000 Device Template
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-6-create-a-system-feature-template-with-secondary-region-for-site-6000-and-7000" class="md-nav__link">
-    Step 6: Create a System Feature Template with Secondary Region for Site 6000 and 7000
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-7-update-site-6000-device-template" class="md-nav__link">
-    Step 7: Update Site 6000 Device Template
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-8-update-site-7000-device-template" class="md-nav__link">
-    Step 8: Update Site 7000 Device Template
+  <a href="#step-5-enable-secondary-region-for-site-6000-and-7000" class="md-nav__link">
+    Step 5: Enable Secondary Region for Site 6000 and 7000
   </a>
   
 </li>
@@ -653,36 +632,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-create-a-system-feature-template-with-secondary-region-for-site-5000" class="md-nav__link">
-    Step 4: Create a System Feature Template with Secondary Region for Site 5000
+  <a href="#step-4-enable-secondary-region-for-site-5000" class="md-nav__link">
+    Step 4: Enable Secondary Region for Site 5000
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-update-site-5000-device-template" class="md-nav__link">
-    Step 5: Update Site 5000 Device Template
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-6-create-a-system-feature-template-with-secondary-region-for-site-6000-and-7000" class="md-nav__link">
-    Step 6: Create a System Feature Template with Secondary Region for Site 6000 and 7000
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-7-update-site-6000-device-template" class="md-nav__link">
-    Step 7: Update Site 6000 Device Template
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-8-update-site-7000-device-template" class="md-nav__link">
-    Step 8: Update Site 7000 Device Template
+  <a href="#step-5-enable-secondary-region-for-site-6000-and-7000" class="md-nav__link">
+    Step 5: Enable Secondary Region for Site 6000 and 7000
   </a>
   
 </li>
@@ -821,8 +779,8 @@
 <p class="admonition-title">Note</p>
 <p><strong>With this configuration, we disable the comparison of the number of hops, OMP applies equal-cost multi-path routing (ECMP) to all routes, and packets can use all available paths.</strong>  </p>
 </div>
-<h3 id="step-4-create-a-system-feature-template-with-secondary-region-for-site-5000"><strong>Step 4: Create a System Feature Template with Secondary Region for Site 5000</strong></h3>
-<p>In this step, you will update the device templates and enable Secondary Region on Site 5000, Site 6000 and Site 7000. </p>
+<h3 id="step-4-enable-secondary-region-for-site-5000"><strong>Step 4: Enable Secondary Region for Site 5000</strong></h3>
+<p>In this step, you will update the device templates and enable Secondary Region on Site 5000.</p>
 <ul>
 <li>
 <p>Modify the <strong>Cisco System</strong> Feature template currently used by the <strong>Site 5000</strong> edge router to participate in the secondary.  </p>
@@ -848,59 +806,120 @@
 </ul>
 <p><img alt="" src="../pic/task7-4-4.png" /></p>
 <ul>
-<li>Click ‘Update’ to save the changes.</li>
+<li>
+<p>Click ‘Update’ to save the changes.</p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong> look up for the <strong>cEDGE_SITE-5000_DT</strong> device template and edit it.  </p>
+</li>
 </ul>
-<h3 id="step-5-update-site-5000-device-template"><strong>Step 5: Update Site 5000 Device Template</strong></h3>
-<p>Next, go to <strong>Configuration &gt; Templates &gt; Device Templates</strong> look up for the <strong>cEDGE_SITE-5000_DT</strong> device template and edit it.</p>
 <p><img alt="" src="../pic/task7-5-1.png" /></p>
-<p>In the ‘Cisco System’ section, select the feature template we previously created named <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong></p>
+<ul>
+<li>In the ‘Cisco System’ section, select the feature template we previously created named <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong></li>
+</ul>
 <p><img alt="" src="../pic/task7-5-2.png" /></p>
-<p>Now, in the ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template we created in step 3.</p>
+<ul>
+<li>Under the ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template we created in step 3.  </li>
+</ul>
 <p><img alt="" src="../pic/task7-5-3.png" /></p>
-<p>Next, in the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 1 named <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong> respectively.</p>
+<ul>
+<li>Under the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 1 named <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong> respectively.</li>
+</ul>
 <p><img alt="" src="../pic/task7-5-4.png" /></p>
-<p>Finally, click ‘Update’, and fill out the 2 missing variables with <strong>GigabitEthernet2</strong> and <strong>10.2.11.2/24</strong> respectively.</p>
+<ul>
+<li>Finally, click ‘Update’, and fill out the two new variables with <strong>GigabitEthernet2</strong> and <strong>10.2.11.2/24</strong> as shown below. </li>
+</ul>
 <p><img alt="" src="../pic/task7-5-6.png" /></p>
-<p>Click ‘Update’ and you should see in the ‘Config Diff’ section all the next lines in green color being pushed to the device if you scroll down</p>
+<ul>
+<li>Click ‘Update’ and you should see in the ‘Config Diff’ section all the next lines in green color being pushed to the device if you scroll down. </li>
+</ul>
 <p><img alt="" src="../pic/task7-5-7.png" />
 <img alt="" src="../pic/task7-5-8.png" />
 <img alt="" src="../pic/task7-5-9.png" />
 <img alt="" src="../pic/task7-5-10.png" /></p>
-<p>Finally click ‘Configure Devices’.</p>
-<h3 id="step-6-create-a-system-feature-template-with-secondary-region-for-site-6000-and-7000"><strong>Step 6: Create a System Feature Template with Secondary Region for Site 6000 and 7000</strong></h3>
-<p>Again, for simplicity, let’s copy the ‘System’ Feature template currently used by the <strong>Site 6000</strong> and <strong>7000</strong> to participate in the secondary. So, go <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong> and click ‘Copy’.</p>
+<ul>
+<li>After compare the diff, click ‘Configure Devices’ to push configuration.  </li>
+</ul>
+<h3 id="step-5-enable-secondary-region-for-site-6000-and-7000"><strong>Step 5: Enable Secondary Region for Site 6000 and 7000</strong></h3>
+<p>In this step, you will update the device templates and enable Secondary Region on Site 6000 and site 7000. Again, for simplicity, let’s copy the ‘System’ Feature template currently used by the <strong>Site 6000</strong> and <strong>site 7000</strong> to participate in the secondary.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature</strong>; look up for the <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong> and click ‘Copy’.</li>
+</ul>
 <p><img alt="" src="../pic/task7-6-1.png" /></p>
-<p>Name it  <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong></p>
+<ul>
+<li>Name it  <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong></li>
+</ul>
 <p><img alt="" src="../pic/task7-6-2.png" /></p>
-<p>Next, look up for the same <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong> feature template we just created and click ‘Edit’.</p>
+<ul>
+<li>Look up for <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong> feature template you just created and click ‘Edit’.</li>
+</ul>
 <p><img alt="" src="../pic/task7-6-3.png" /></p>
-<p>Next, make Global on the ‘Secondary Region’ parameter and select <strong>SECONDARY-REGION</strong> from the dropdown menu.</p>
+<ul>
+<li>Make <strong>Global</strong> on the ‘Secondary Region’ parameter and select <strong>SECONDARY-REGION</strong> from the dropdown menu.</li>
+</ul>
 <p><img alt="" src="../pic/task7-6-4.png" /></p>
+<ul>
+<li>
 <p>Click ‘Update’.</p>
-<h3 id="step-7-update-site-6000-device-template"><strong>Step 7: Update Site 6000 Device Template</strong></h3>
-<p>Now in <strong>Configuration &gt; Templates &gt; Device Templates</strong> look up for the <strong>cEDGE_SITE-6000_DT</strong> device template and edit it to call all the new feature templates.</p>
+</li>
+<li>
+<p>Update device template for Site 6000  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>; look up for the <strong>cEDGE_SITE-6000_DT</strong> device template and edit it.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task7-7-1.png" /></p>
-<p>In ‘Cisco System’ section select the feature template we previously created named <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong>.</p>
+<ul>
+<li>Under ‘Cisco System' section select the feature template <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong>.</li>
+</ul>
 <p><img alt="" src="../pic/task7-7-2.png" /></p>
-<p>Next, in the ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template we created in step 3.</p>
+<ul>
+<li>Under ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template. </li>
+</ul>
 <p><img alt="" src="../pic/task7-7-3.png" /></p>
-<p>Now, in the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 2 named <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong></p>
+<ul>
+<li>Under the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 2 named <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong></li>
+</ul>
 <p><img alt="" src="../pic/task7-7-4.png" /></p>
+<ul>
+<li>
 <p>Click ‘Update’, then ‘Next’.</p>
-<p>You should see the all the next lines in green color in the ‘Config Diff’ being pushed to the device if you scroll down. Finally click ‘Configure Devices’.</p>
+</li>
+<li>
+<p>You should see the all the next lines in green color in the ‘Config Diff’ being pushed to the device if you scroll down.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task7-7-5.png" />
 <img alt="" src="../pic/task7-7-6.png" />
 <img alt="" src="../pic/task7-7-7.png" /></p>
-<h3 id="step-8-update-site-7000-device-template"><strong>Step 8: Update Site 7000 Device Template</strong></h3>
-<p>let’s repeat the same process as step 7 but now for <strong>Site 7000</strong>, therefore go to <strong>Configuration &gt; Templates &gt; Device Templates</strong> look up for the <strong>cEDGE_SITE-7000_DT</strong> device template and edit it to call all the new feature templates.</p>
+<ul>
+<li>
+<p>Click ‘Configure Devices’ to push the configuration after compare the diff.  </p>
+</li>
+<li>
+<p>Let’s repeat the same process to update device template for <strong>Site 7000</strong>.  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>; look up for the <strong>cEDGE_SITE-7000_DT</strong> device template and edit.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task7-8-1.png" /></p>
-<p>In ‘Cisco System’ section select the <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong> feature template.</p>
+<ul>
+<li>Under ‘Cisco System’ section select the <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong> feature template.</li>
+</ul>
 <p><img alt="" src="../pic/task7-8-2.png" /></p>
-<p>Now, in the ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template.</p>
+<ul>
+<li>Under the ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template.</li>
+</ul>
 <p><img alt="" src="../pic/task7-8-3.png" /></p>
-<p>Next, in the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 2 named <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong>.</p>
+<ul>
+<li>Under the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 2 named <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong>.</li>
+</ul>
 <p><img alt="" src="../pic/task7-8-4.png" /></p>
-<p>Click ‘Update’, then ‘Next’ and fill out the 2 missing variables with <strong>GigabitEthernet1</strong> and <strong>10.2.12.2/24</strong> respectively.</p>
+<ul>
+<li>Click ‘Update’, then ‘Next’ and fill out the 2 missing variables with <strong>GigabitEthernet1</strong> and <strong>10.2.12.2/24</strong> respectively.</li>
+</ul>
 <p><img alt="" src="../pic/task7-8-5.png" /></p>
 <p>You should see the all the next lines in green color in the ‘Config Diff’ being pushed to the device if you scroll down. Finally click ‘Configure Devices’.</p>
 <p><img alt="" src="../pic/task7-8-6.png" />

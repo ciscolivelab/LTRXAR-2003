@@ -551,8 +551,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-9-make-controller-3-secondary-region-aware-and-validation" class="md-nav__link">
-    Step 9: Make Controller-3 Secondary Region-aware and Validation
+  <a href="#step-6-make-controller-3-secondary-region-aware-and-validation" class="md-nav__link">
+    Step 6: Make Controller-3 Secondary Region-aware and Validation
   </a>
   
 </li>
@@ -646,8 +646,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-9-make-controller-3-secondary-region-aware-and-validation" class="md-nav__link">
-    Step 9: Make Controller-3 Secondary Region-aware and Validation
+  <a href="#step-6-make-controller-3-secondary-region-aware-and-validation" class="md-nav__link">
+    Step 6: Make Controller-3 Secondary Region-aware and Validation
   </a>
   
 </li>
@@ -918,29 +918,81 @@
 </ul>
 <p><img alt="" src="../pic/task7-8-4.png" /></p>
 <ul>
-<li>Click ‘Update’, then ‘Next’ and fill out the 2 missing variables with <strong>GigabitEthernet1</strong> and <strong>10.2.12.2/24</strong> respectively.</li>
+<li>Click ‘Update’, and fill out the two new variables with <strong>GigabitEthernet1</strong> and <strong>10.2.12.2/24</strong> as shown below.</li>
 </ul>
 <p><img alt="" src="../pic/task7-8-5.png" /></p>
-<p>You should see the all the next lines in green color in the ‘Config Diff’ being pushed to the device if you scroll down. Finally click ‘Configure Devices’.</p>
+<ul>
+<li>Click ‘Update’ and you should see in the ‘Config Diff’ section all the next lines in green color being pushed to the device if you scroll down. </li>
+</ul>
 <p><img alt="" src="../pic/task7-8-6.png" />
 <img alt="" src="../pic/task7-8-7.png" />
 <img alt="" src="../pic/task7-8-8.png" /></p>
-<p>Finally click ‘Configure Devices’</p>
-<h3 id="step-9-make-controller-3-secondary-region-aware-and-validation"><strong>Step 9: Make Controller-3 Secondary Region-aware and Validation</strong></h3>
-<p>The sites <strong>Site 5000</strong>, <strong>Site 6000</strong> and <strong>Site 7000</strong> have been configured to participate in the <strong>SECONDARY-REGION (3)</strong>, the last thing to do is to configure the <strong>Controller-3 (1.1.1.5)</strong> to participate as well in this region</p>
-<p>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong> and look up for the <strong>CONTROLLER-3_SYSTEM_FT</strong> feature template and edit it.</p>
+<ul>
+<li>After compare the diff, click ‘Configure Devices’ to push configuration.</li>
+</ul>
+<h3 id="step-6-make-controller-3-secondary-region-aware-and-validation"><strong>Step 6: Make Controller-3 Secondary Region-aware and Validation</strong></h3>
+<p>Sites <strong>Site 5000</strong>, <strong>Site 6000</strong> and <strong>Site 7000</strong> have been configured to participate in the <strong>SECONDARY-REGION (3)</strong>. However there is no controller for secondary region yet. In this step, you will configure <strong>Controller-3 (1.1.1.5)</strong> for secondary region.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong> and look up for the <strong>CONTROLLER-3_SYSTEM_FT</strong> feature template and edit it.</li>
+</ul>
 <p><img alt="" src="../pic/task7-9-1.png" /></p>
-<p>Next, in the ‘Region ID List’ parameter, add the <strong>SECONDARY-REGION</strong> to serve this region besides the Core Region.</p>
+<ul>
+<li>In the ‘Region ID List’ parameter, add the <strong>SECONDARY-REGION</strong> to serve this region besides the Core Region.</li>
+</ul>
 <p><img alt="" src="../pic/task7-9-2.png" /></p>
-<p>Click ‘Update’, then ‘Next’ and you should see the next in the ‘Config Diff’.</p>
+<ul>
+<li>Click ‘Update’, then ‘Next’ and you should see the next in the ‘Config Diff’.</li>
+</ul>
 <p><img alt="" src="../pic/task7-9-3.png" /></p>
-<p>Click ‘Configure Devices’.</p>
-<p>At this point <strong>Site 5000</strong> has connectivity to <strong>Site 6000</strong> and <strong>7000</strong> and vice versa through the Core Fabric and through the Direct Path. </p>
-<p>This ECMP is because we enabled ‘Ignore Region-Path Length During Best-Path Algorithm’. This is particularly useful on some use-cases where we want to Send non-critical traffic using cheaper WAN links rather than using the optimized middle-mile WAN or PAYG links. </p>
-<p>We can confirm this only through the CLI, hence go to the mRemoteNG client and SSH into the <strong>EDGE-BRANCH-5-01</strong> and then issue the command <strong>show ip route vrf 10</strong>.</p>
+<ul>
+<li>Click ‘Configure Devices’ to push the configuration.  </li>
+</ul>
+<p>Now, Site 5000 has connectivity to Site 6000 and Site 7000, and vice versa, through the Core Fabric and the Direct Path over the secondary region.</p>
+<p>Because you enabled ‘Ignore Region-Path Length During Best-Path Algorithm’ on the new OMP template in step 1, the system uses ECMP over all available paths, including the direct path and the path over the core region. This is beneficial in use cases where the requirement is to send non-critical traffic using lower-cost WAN links instead of the optimized middle-mile WAN or PAYG links in the core region.  </p>
+<ul>
+<li>
+<p>Let's verify this from SDWAN manager.  </p>
+</li>
+<li>
+<p>Go to <strong>Monitor &gt; Devices &gt; EDGE-BRANCH-5-01</strong>  </p>
+</li>
+</ul>
+<p><img alt="" src="pic/task7-9-6.png" />  </p>
+<ul>
+<li>Select <strong>Troubleshooting</strong> from the navigation panel on the left and then select <strong>Simulate Flows</strong>  </li>
+</ul>
+<p><img alt="" src="../pic/task7-9-7.png" />  </p>
+<ul>
+<li>In the <strong>Simulate Flows</strong> window, enter the following parameters for simulated flow.  <ul>
+<li>VPN : <strong>VPN- 10</strong></li>
+<li>Source/Interface for VPN - 10: <strong>GigabitEthernet3</strong>  </li>
+<li>Source IP: <strong>10.50.1.129</strong>  </li>
+<li>Destination IP: <strong>10.60.1.101</strong>  </li>
+</ul>
+</li>
+<li>Click <strong>Simulate</strong>, and you should see output similar to the screenshot below. </li>
+</ul>
+<p><img alt="" src="../pic/task7-9-8.png" />  </p>
+<ul>
+<li>
+<p>As you can see the output from simulated flow, there are multiple paths available from site 5000 to site 6000. You can try different IPs in site 6000 and or site 7000 and see what is the output.  </p>
+</li>
+<li>
+<p>We can confirm this from CLI.  </p>
+</li>
+<li>Go to the mRemoteNG client and SSH into the <strong>EDGE-BRANCH-5-01</strong> and then issue the command <strong>show ip route vrf 10</strong>.</li>
+</ul>
 <p><img alt="" src="../pic/task7-9-4.png" /></p>
-<p>As we can see from on from the previous output, all prefixes from the <strong>East Region</strong> have now 3 TLOCs IP pointing to, two being through the <strong>West Border routers</strong>, and one being the <strong>Originator TLOC IP</strong> for the direct path.</p>
-<p>Finally, go back to the <strong>Ubuntu Site-5000-VPN-10-Ubun</strong> host, and run another trace to the <strong>10.60.1.101</strong> that lives in <strong>Site 6000</strong></p>
+<ul>
+<li>
+<p>As we can see from the output, all prefixes from the <strong>East Region</strong> have <strong>3 TLOCs IP</strong> pointing to, two being through the <strong>West Border routers</strong>, and one being the <strong>Originator TLOC IP</strong> for the direct path.  </p>
+</li>
+<li>
+<p>Switch back to the Ubuntu <strong>Site-5000-VPN-10-Ubun</strong> host; run trace to host <strong>10.60.1.101</strong> that lives in <strong>Site 6000</strong>  </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>traceroute 10.60.1.101
+</code></pre></div>
 <p><img alt="" src="../pic/task7-9-5.png" /></p>
 <p>This time we can see that this flow goes through the Core, however because the ECMP hash, it could go as well through the direct path.</p>
 

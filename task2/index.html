@@ -627,7 +627,7 @@
 
   <h1>Task 2 - Prepare MRF Migration</h1>
 
-<p>In this task, you will perform the following prerequisites before migrating MRF.  </p>
+<p>In this task, you will perform the following prerequisites before migrating from flat SD-WAN fabric to MRF.  </p>
 <ul>
 <li>Enable MRF  </li>
 <li>Creat regions  </li>
@@ -669,7 +669,7 @@ In this lab, WEST-REGION has been assigned with Region ID 1, and EAST-REGION has
 </div>
 <ul>
 <li>
-<p>In this lab, the controller is assigned to the region by configuring <strong>Region ID List</strong> on controller System feature template. </p>
+<p>The controller is assigned to the region by configuring <strong>Region ID List</strong> on controller System feature template. </p>
 </li>
 <li>
 <p>Go to <strong>Configuration &gt; Template &gt; Feature Templates</strong>, type <strong>SYSTEM_FT</strong> in the seach field, and you will see 4 pre-configured Controllers feature templates, one for each controller.  </p>
@@ -690,13 +690,17 @@ In this lab, WEST-REGION has been assigned with Region ID 1, and EAST-REGION has
 <p>Click the <strong>...</strong> to view each of the controller system feature template.  </p>
 </li>
 </ul>
-<p><img alt="" src="../pic/task2-3-2.png" />  </p>
-<p><img alt="" src="../pic/task2-3-3.png" />  </p>
-<p><img alt="" src="../pic/task2-3-4.png" />  </p>
-<p><img alt="" src="../pic/task2-3-5.png" />  </p>
+<p>CONTROLLER-1_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-2.png" />  </p>
+<p>CONTROLLER-2_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-3.png" />  </p>
+<p>CONTROLLER-3_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-4.png" />  </p>
+<p>CONTROLLER-4_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-5.png" />  </p>
 <ul>
 <li>
-<p>After assigning distributed controllers for regions, all WAN Edges in the overlay have not been assigned to a region, leaving **Controller-4(1.1.1.6) as the default controller for the entire overlay. You can verify that by checking the controller control connections of all WAN Edges.  </p>
+<p>After assigning distributed controllers for regions, all WAN Edges in the overlay remain un-assigned to any region, with **Controller-4(1.1.1.6) serving as the default controller for the entire overlay. You can verify that by checking the controller control connections of all WAN Edges.  </p>
 </li>
 <li>
 <p>Go to <strong>Monitor &gt; Devices</strong> and look the <strong>vSmart Control</strong> column.  </p>
@@ -705,7 +709,7 @@ In this lab, WEST-REGION has been assigned with Region ID 1, and EAST-REGION has
 <p><img alt="" src="../pic/task2-3-6.png" />  </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Your output may display <strong>0 control connection</strong>. Please perform Rediscovery Network to show the correct outputs.  </p>
+<p>If output shows <strong>0 control connection</strong>, please perform Rediscovery Network to show the correct outputs.  </p>
 </div>
 <ul>
 <li>You can also verify this by going to <strong>Monitor &gt; Devices</strong>; select a device and then look up for <strong>OMP peers</strong> with the <strong>Real Time</strong> function.  </li>

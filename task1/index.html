@@ -439,43 +439,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#-" class="md-nav__link">
-    ---
-  </a>
-  
-    <nav class="md-nav" aria-label="---">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#step-1-review-existing-policy" class="md-nav__link">
     Step 1: Review existing policy
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#step-2-review-bfd-tunnels" class="md-nav__link">
     Step 2: Review BFD Tunnels
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#step-3-review-ip-route" class="md-nav__link">
     Step 3: Review IP Route
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#step-4-review-path-between-spoke-sites" class="md-nav__link">
     Step 4: Review Path between spoke sites
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -624,43 +611,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#-" class="md-nav__link">
-    ---
-  </a>
-  
-    <nav class="md-nav" aria-label="---">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#step-1-review-existing-policy" class="md-nav__link">
     Step 1: Review existing policy
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#step-2-review-bfd-tunnels" class="md-nav__link">
     Step 2: Review BFD Tunnels
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#step-3-review-ip-route" class="md-nav__link">
     Step 3: Review IP Route
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#step-4-review-path-between-spoke-sites" class="md-nav__link">
     Step 4: Review Path between spoke sites
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -687,8 +661,8 @@
 <p>Rediscovery Fabric Network to ensure all virtual nodes are reachable. Please inform the speaker if any virtual device appear as un-reachable.  </p>
 <p>Go to <strong>Tools &gt; Rediscovery Network</strong>, mark all the device checkboxes and click 'Rediscover'.  </p>
 <p><img alt="" src="../pic/task1-0-2.png" /> </p>
-<h2 id="-">---</h2>
-<p>In this task you will understand the current active centralized policy that creates a Regional Hub &amp; Spoke topology.  </p>
+<hr />
+<p>In this task you will review and understand the current active centralized policy that creates a Regional Hub &amp; Spoke topology. By default, SD-WAN solution builds a full mesh topology, any site will build tunnel with any other site. To build hub and spoke topology, or build regional hierarchy like we have in the lab, a centralized control policy is required.    </p>
 <h3 id="step-1-review-existing-policy"><strong>Step 1: Review existing policy</strong></h3>
 <p>Once you have the RDP session to the remote workstation, open <strong>Chrome</strong> browser icon on the desktop.  </p>
 <ul>
@@ -701,7 +675,7 @@
 </ul>
 <p><img alt="" src="../pic/task1-1-1.png" /></p>
 <ul>
-<li>This <strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong> policy adjusts the Control Plane to intercommunicate all sites within the West region in a full-mesh fashion but without direct connectivity to the East region, by denying TLOCs and using TLOC re-writes. For this we rely on the West Hub (Site 201) connectivity towards the East Hub (Site 202) through the BGP Core network using Service side VPN.  </li>
+<li>This <strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong> adjusts the control plane to allow full-mesh intercommunication among all sites within the West region while preventing direct connectivity to the East region. This is achieved by denying TLOCs and utilizing TLOC re-writes. The West Hub (Site 201) connects to the East Hub (Site 202) through the BGP core network using the service-side VPN.   </li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -864,7 +838,8 @@ apply-policy
 !
 </code></pre></div>
 <h3 id="step-2-review-bfd-tunnels"><strong>Step 2: Review BFD Tunnels</strong></h3>
-<p>Next, you'll examine the BFD tunnels from the spoke sites. You can either utilize the <strong>Manager Real Time UI option</strong> to confirm TLOCs and BFD sessions, or opt to SSH into the WAN Edges and execute command lines via an SSH terminal.<br />
+<p>Next, you'll examine the BFD tunnels from the spoke sites. A spoke site in west region, site 5000 will not have BFD tunnel to spoke sites in east region, such as site 6000, and site 7000.<br />
+You can either utilize the <strong>Manager Real Time UI option</strong> to confirm TLOCs and BFD sessions, or opt to SSH into the WAN Edges and execute command lines via an SSH terminal.<br />
 For SSH access, you can leverage <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" />on your desktop.  </p>
 <ul>
 <li>
@@ -881,7 +856,7 @@ For SSH access, you can leverage <strong>mRemoteNG</strong> <img alt="" src="../
 <p><strong>We don’t see East TLOC’s IPs like 1.1.60.1, 1.1.70.1, 1.1.202.1 or 1.1.202.2 nor BFD tunnels against their Site IDs 202,6000 and 7000</strong>  </p>
 <p><img alt="" src="../pic/task1-2-2.png" />  </p>
 <h3 id="step-3-review-ip-route"><strong>Step 3: Review IP Route</strong></h3>
-<p>Next, you'll examine the route tables from the spoke sites.  </p>
+<p>Next, you'll examine the route tables from the spoke sites. A spoke site in west region doesn't have direct tunnel to spoke site in east region, but it learns east region spokes' prefixes with next hop pointing to west hubs.  </p>
 <ul>
 <li>In the <strong>Device Options</strong> field, enter <strong>IP route</strong>.  </li>
 <li>As you can see, even though it doesn't have tunnels towards the East sites, it has prefixes for such sites but pointing to the <strong>West Hubs (Site 201)</strong> TLOCs IPs instead of the originators.  </li>
@@ -889,7 +864,7 @@ For SSH access, you can leverage <strong>mRemoteNG</strong> <img alt="" src="../
 <p><img alt="" src="../pic/task1-3-1.png" />
 <img alt="" src="../pic/task1-3-2.png" />    </p>
 <h3 id="step-4-review-path-between-spoke-sites"><strong>Step 4: Review Path between spoke sites</strong></h3>
-<p>Next, you'll run traceroute and ping to test reachability of ubuntu hosts between different branch sites.  </p>
+<p>To confirm the path for communication between spokes in different regions. Run traceroute and ping to test reachability of ubuntu hosts between branch sites in different regions.  </p>
 <ul>
 <li>Click <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" /> on your desktop, select <strong>Site-3000-VPN-10-Ubun</strong> and open RDP session to the host with password <strong>C1sco12345</strong>. Run ping and traceroute to Ubuntu host in Site 6000 with IP <strong>10.60.1.101</strong>.   </li>
 </ul>

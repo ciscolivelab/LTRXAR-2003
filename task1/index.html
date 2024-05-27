@@ -510,7 +510,7 @@
   
     <li class="md-nav__item">
       <a href="../task4/" class="md-nav__link">
-        Task 4 - Configure MRF on Border Routers
+        Task 4 - Enable MRF on Border Routers
       </a>
     </li>
   
@@ -524,7 +524,7 @@
   
     <li class="md-nav__item">
       <a href="../task5/" class="md-nav__link">
-        Task 5 - Enable Region on Edge Routers
+        Task 5 - Enable MRF on Edge Routers
       </a>
     </li>
   
@@ -552,7 +552,7 @@
   
     <li class="md-nav__item">
       <a href="../task7/" class="md-nav__link">
-        Task 7 - Create a MRF Secondary Region
+        Task 7 - MRF Secondary Region
       </a>
     </li>
   
@@ -566,7 +566,7 @@
   
     <li class="md-nav__item">
       <a href="../task8/" class="md-nav__link">
-        Task 8 - MRF Policy
+        Task 8 - MRF Central Policy
       </a>
     </li>
   
@@ -675,7 +675,7 @@
 </ul>
 <p><img alt="" src="../pic/task1-1-1.png" /></p>
 <ul>
-<li>This <strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong> adjusts the control plane to allow full-mesh intercommunication among all sites within the West region while preventing direct connectivity to the East region. This is achieved by denying TLOCs and utilizing TLOC re-writes. The West Hub (Site 201) connects to the East Hub (Site 202) through the BGP core network using the service-side VPN.   </li>
+<li>This <strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong> adjusts the control plane to allow full-mesh intercommunication among all sites within the West region (Site ID 201,1010,1020,3000,4000,5000) while preventing direct connectivity to the East region. This is achieved by denying TLOCs and utilizing TLOC re-writes. The West Hub (Site 201) connects to the East Hub (Site 202) through the BGP core network using the service-side VPN.   </li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -856,7 +856,7 @@ For SSH access, you can leverage <strong>mRemoteNG</strong> <img alt="" src="../
 <p><strong>We don’t see East TLOC’s IPs like 1.1.60.1, 1.1.70.1, 1.1.202.1 or 1.1.202.2 nor BFD tunnels against their Site IDs 202,6000 and 7000</strong>  </p>
 <p><img alt="" src="../pic/task1-2-2.png" />  </p>
 <h3 id="step-3-review-ip-route"><strong>Step 3: Review IP Route</strong></h3>
-<p>Next, you'll examine the route tables from the spoke sites. A spoke site in west region doesn't have direct tunnel to spoke site in east region, but it learns east region spokes' prefixes with next hop pointing to west hubs.  </p>
+<p>Next, you'll examine the route tables from the spoke sites. A spoke site in west region (site 3000, 4000, 5000) doesn't have direct tunnel to spoke site in east region (site 6000,7000), but it learns east region spokes' prefixes with next hop pointing to west hubs (site 201).  </p>
 <ul>
 <li>In the <strong>Device Options</strong> field, enter <strong>IP route</strong>.  </li>
 <li>As you can see, even though it doesn't have tunnels towards the East sites, it has prefixes for such sites but pointing to the <strong>West Hubs (Site 201)</strong> TLOCs IPs instead of the originators.  </li>

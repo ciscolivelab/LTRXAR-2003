@@ -541,6 +541,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#congratulations-you-have-completed-the-whole-lab" class="md-nav__link">
+    Congratulations, you have completed the whole lab!!
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -594,6 +601,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#congratulations-you-have-completed-the-whole-lab" class="md-nav__link">
+    Congratulations, you have completed the whole lab!!
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -609,76 +623,175 @@
                   
 
 
-  <h1>Task 8 - MRF Policy</h1>
-
+<p>Another use case for secondary region is to set different preference for different VPN. </p>
 <p>In this task you will create a Multi-Region Fabric (MRF) Control Policy that will steer VPN 11 traffic through the direct path over the Secondary Region while all other VPN 10 traffic will ECMP through all paths.</p>
 <h3 id="step-1-create-a-new-control-policy"><strong>Step 1: Create a New Control Policy</strong></h3>
-<p>Go to <strong>Configuration &gt; Policies &gt; Add Policy</strong></p>
+<ul>
+<li>Go to <strong>Configuration &gt; Policies &gt; Add Policy</strong></li>
+</ul>
 <p><img alt="" src="../pic/task8-1-1.png" /></p>
-<p>On the left-side pane from the first section, select <strong>Region</strong> and then click ‘New Region List’</p>
+<ul>
+<li>On the left-side pane from the first section, select <strong>Region</strong> and then click ‘New Region List’</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-2.png" /></p>
-<p>Name this Region List as <strong>ACCESS</strong> with the regions <strong>1,2</strong>.</p>
+<ul>
+<li>Name this Region List as <strong>ACCESS</strong> with the regions <strong>1,2</strong>.</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-3.png" /></p>
+<ul>
+<li>
 <p>Click ‘Add’.</p>
-<p>Also, let’s create a Site List, so click on the left-side pane ‘Site’ and then ‘+New Site List’.</p>
+</li>
+<li>
+<p>Also, let’s create a Site List, so click on the left-side pane ‘Site’ and then ‘+ New Site List’.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-4.png" /></p>
-<p>Name it as <strong>SECONDARY_REGION_SITES</strong> with the Sites <strong>5000,6000,7000</strong></p>
+<ul>
+<li>Name it as <strong>SECONDARY_REGION_SITES</strong> with the Sites <strong>5000,6000,7000</strong></li>
+</ul>
 <p><img alt="" src="../pic/task8-1-5.png" /></p>
+<ul>
+<li>
 <p>Click ‘Add’ and then ‘Next’. </p>
+</li>
+<li>
 <p>Now, click <strong>Add Topology</strong> and select <strong>Custom Control (Route &amp; Tloc)</strong></p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-6.png" /></p>
-<p>Name this Control Policy as <strong>MRF_CP</strong>.</p>
+<ul>
+<li>Name this Control Policy as <strong>MRF_CP</strong>.</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-7.png" /></p>
-<p>Click ‘+ Sequence Type’ and then select ‘TLOC’</p>
+<ul>
+<li>Click ‘+ Sequence Type’ and then select ‘TLOC’</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-8.png" /></p>
-<p>Next, click on ‘+ Sequence Rule’, and select ‘Actions’ and finally enable ‘Accept’</p>
+<ul>
+<li>Next, click on ‘+ Sequence Rule’, and select ‘Actions’ and finally enable ‘Accept’</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-9.png" /></p>
+<ul>
+<li>
 <p>Click ‘Save Match and Actions’.</p>
+</li>
+<li>
 <p>Now, again click ‘+ Sequence Type’, but this time select ‘Route’</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-10.png" /></p>
-<p>Click on ‘+ Sequence Rule’, and under the ‘Match’ section, select ‘Region’ with the Region List <strong>ACCESS</strong></p>
+<ul>
+<li>Click on ‘+ Sequence Rule’, and under the ‘Match’ section, select ‘Region’ with the Region List <strong>ACCESS</strong></li>
+</ul>
 <p><img alt="" src="../pic/task8-1-11.png" /></p>
-<p>Also, add a match for ‘VPN’ for <strong>VPN ID 11</strong></p>
+<ul>
+<li>Also, add a match for ‘VPN’ for <strong>VPN ID 11</strong></li>
+</ul>
 <p><img alt="" src="../pic/task8-1-12.png" /></p>
-<p>Next, add one more match for ‘Path Type’ and select <strong>HIERARCHICAL</strong></p>
+<ul>
+<li>Next, add one more match for ‘Path Type’ and select <strong>HIERARCHICAL</strong></li>
+</ul>
 <p><img alt="" src="../pic/task8-1-13.png" /></p>
-<p>Now click ‘Actions’ and leave the ‘Reject’ option enabled.</p>
+<ul>
+<li>Click ‘Actions’ and leave the ‘Reject’ option enabled.</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-14.png" /></p>
+<ul>
+<li>
 <p>Click 'Save Match and Actions'</p>
-<p>Click again on ‘+ Sequence Rule’, and do not select any match.</p>
+</li>
+<li>
+<p>Click ‘+ Sequence Rule’ to add another rule, and do not select any match.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-15.png" /></p>
-<p>Next, click ‘Actions, and enable ‘Accept’.</p>
+<ul>
+<li>Next, click ‘Actions, and enable ‘Accept’.</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-16.png" /></p>
+<ul>
+<li>
 <p>Click ‘Save Match and Actions’.</p>
+</li>
+<li>
 <p>Finally, click ‘Save Control Policy’.</p>
+</li>
+<li>
 <p>You will be returned to the next ‘Configure Topology and VPN Membership’ where now we can see the Control Policy we just created.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-17.png" /></p>
+<ul>
+<li>
 <p>Click ‘Next’, and ‘Next’ once again till you get to the ‘Apply Policies to Sites and VPNs’ section.</p>
-<p>Name, this Centralized Policy as <strong>MRF_POLICY</strong>, then click ‘+ New Site/Region List’ and enable ‘Region’ with <strong>ACCESS</strong> as the Outbound Region List as follows.</p>
+</li>
+<li>
+<p>Name this Centralized Policy as <strong>MRF_POLICY</strong>, then click ‘+ New Site/Region List’ and enable ‘Region’ with <strong>ACCESS</strong> as the Outbound Region List as follows.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-18.png" /></p>
-<p>Click 'Add'.</p>
+<ul>
+<li>Click 'Add'.</li>
+</ul>
 <p><img alt="" src="../pic/task8-1-19.png" /></p>
-<p>Finally click ‘Save Policy’.</p>
+<ul>
+<li>Finally click ‘Save Policy’.</li>
+</ul>
 <h3 id="step-2-understand-activate-and-confirm-mrf-policy"><strong>Step 2: Understand, Activate and Confirm MRF Policy</strong></h3>
-<p>Before we activate this new MRF Policy, go to <strong>Configuration &gt; Policies</strong> and click ‘Preview’ on the MRF_POLICY policy we just created</p>
+<ul>
+<li>Before we activate this new MRF Policy, go to <strong>Configuration &gt; Policies</strong> and click ‘Preview’ on the MRF_POLICY policy we just created</li>
+</ul>
 <p><img alt="" src="../pic/task8-2-1.png" /></p>
-<p>Try to understand such policy first, but at the end, what we are doing with the MRF Control Policy is to not advertise prefixes from Access regions <strong>1</strong> and <strong>2</strong> with a hierarchical path and from <strong>VPN 11</strong> to <strong>Sites 5000, 6000</strong> and <strong>7000</strong> only.</p>
+<ul>
+<li>The goal of the MRF Control Policy is to prevent the advertisement of prefixes from Access Regions 1 and 2 with a hierarchical path, and from VPN 11 to Sites <strong>5000, 6000</strong>, and <strong>7000</strong> only.Try to understand the policy from preview.  </li>
+</ul>
 <p><img alt="" src="../pic/task8-2-2.png" /></p>
-<p>This a good use-case example, where we do want <strong>VPN 10</strong>, where we have our critical Corporate traffic, to go through the Core or the direct Path with ECMP, while only allowing our <strong>Guest Traffic</strong> in <strong>VPN 11</strong> to go through the direct path on only these sites with Secondary Regions, without affecting the rest of the access sites. This with the intent to reduce costs and bandwidth at the Core.</p>
-<p>Activate the Policy the <strong>MRF_POLICY</strong> we just created.</p>
+<p>This is a good use-case example where we want VPN 10, which carries our critical corporate traffic, to use the Core or the direct path with ECMP. At the same time, we want to route our <strong>Guest Traffic</strong> in <strong>VPN 11</strong> through the direct path only at these sites with Secondary Regions, without affecting the rest of the access sites. This approach aims to reduce costs and bandwidth usage at the Core.  </p>
+<ul>
+<li>Activate the Policy the <strong>MRF_POLICY</strong> we just created.</li>
+</ul>
 <p><img alt="" src="../pic/task8-2-3.png" /></p>
+<ul>
+<li>
 <p>Click ‘Activate’ and ‘Activate’ once again.</p>
+</li>
+<li>
 <p>Now, SSH into <strong>EDGE-BRANCH-5-01</strong> and issue the show command <strong>show ip route vrf 10</strong>.</p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task8-2-4.png" /></p>
+<ul>
+<li>
 <p>As we can see on the output above, we do have all prefixes from the East Region using all paths available for ECMP, being through the Core or through the Direct Path.</p>
+</li>
+<li>
 <p>Now, run the show command <strong>show ip route vrf 11</strong></p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task8-2-5.png" /></p>
-<p>Above we see now, that for <strong>VPN 11</strong> we can only communicate to the East Region using the direct path as defined in the MRF Policy.</p>
-<p>We can confirm the same by running a trace from the <strong>Site-5000-VPN-10-Ubun</strong> Ubuntu host to the <strong>10.60.1.101</strong> that lives in <strong>Site 6000</strong> in service <strong>VPN 10</strong></p>
+<ul>
+<li>
+<p>As shown above, for <strong>VPN 11</strong>,  communication to the East Region is now only possible using the direct path as defined in the MRF Policy.  </p>
+</li>
+<li>
+<p>You can verify by running a trace from the <strong>Site-5000-VPN-10-Ubun</strong> Ubuntu host to the <strong>10.60.1.101</strong> that's in service <strong>VPN 10</strong> of <strong>Site 6000</strong>.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task8-2-6.png" /></p>
-<p>This time, because the ECMP hash, the traffic is going through the Core but it may go through the Direct Path as well.</p>
-<p>Finally, let’s repeat the same tests but now from the <strong>Site-5000-VPN-11-Ubun</strong> Ubuntu host to the <strong>10.61.1.101</strong> that lives in <strong>Site 6000</strong> in service <strong>VPN 11</strong>.</p>
+<ul>
+<li>
+<p>Because the ECMP hash, the traffic is going through the Core but it may go through the Direct Path as well.</p>
+</li>
+<li>
+<p>Finally, let’s verify by running a trace from the <strong>Site-5000-VPN-11-Ubun</strong> Ubuntu host to the <strong>10.61.1.101</strong> that lives in service <strong>VPN 11</strong> of <strong>Site 6000</strong>.  </p>
+</li>
+</ul>
 <p><img alt="" src="../pic/task8-2-7.png" /></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<h1 id="congratulations-you-have-completed-the-whole-lab"><strong>Congratulations, you have completed the whole lab!!</strong></h1>
+</div>
 
 
 

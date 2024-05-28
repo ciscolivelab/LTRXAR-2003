@@ -623,7 +623,7 @@
                   
 
 
-<p>Another use case for secondary region is to set different preference for different VPN. </p>
+<p>Another use case for secondary region is to set different preference for different VPNs. </p>
 <p>In this task you will create a Multi-Region Fabric (MRF) Control Policy that will steer VPN 11 traffic through the direct path over the Secondary Region while all other VPN 10 traffic will ECMP through all paths.</p>
 <h3 id="step-1-create-a-new-control-policy"><strong>Step 1: Create a New Control Policy</strong></h3>
 <ul>
@@ -744,7 +744,7 @@
 </ul>
 <p><img alt="" src="../pic/task8-2-1.png" /></p>
 <ul>
-<li>The goal of the MRF Control Policy is to prevent the advertisement of prefixes from Access Regions 1 and 2 with a hierarchical path, and from VPN 11 to Sites <strong>5000, 6000</strong>, and <strong>7000</strong> only.Try to understand the policy from preview.  </li>
+<li>The goal of the MRF Control Policy is to prevent the advertisement of prefixes from Access Regions 1 and 2 with a hierarchical path and to limit the prefixes from VPN 11 to Sites <strong>5000, 6000</strong>, and <strong>7000</strong> only.Try to understand the policy from preview.  </li>
 </ul>
 <p><img alt="" src="../pic/task8-2-2.png" /></p>
 <p>This is a good use-case example where we want VPN 10, which carries our critical corporate traffic, to use the Core or the direct path with ECMP. At the same time, we want to route our <strong>Guest Traffic</strong> in <strong>VPN 11</strong> through the direct path only at these sites with Secondary Regions, without affecting the rest of the access sites. This approach aims to reduce costs and bandwidth usage at the Core.  </p>

@@ -551,8 +551,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-make-controller-3-secondary-region-aware-and-validation" class="md-nav__link">
-    Step 6: Make Controller-3 Secondary Region-aware and Validation
+  <a href="#step-6-make-controller-3-secondary-region-aware-and-validate" class="md-nav__link">
+    Step 6: Make Controller-3 Secondary Region-aware and Validate
   </a>
   
 </li>
@@ -646,8 +646,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-make-controller-3-secondary-region-aware-and-validation" class="md-nav__link">
-    Step 6: Make Controller-3 Secondary Region-aware and Validation
+  <a href="#step-6-make-controller-3-secondary-region-aware-and-validate" class="md-nav__link">
+    Step 6: Make Controller-3 Secondary Region-aware and Validate
   </a>
   
 </li>
@@ -930,8 +930,9 @@
 <ul>
 <li>After compare the diff, click ‘Configure Devices’ to push configuration.</li>
 </ul>
-<h3 id="step-6-make-controller-3-secondary-region-aware-and-validation"><strong>Step 6: Make Controller-3 Secondary Region-aware and Validation</strong></h3>
-<p>Sites <strong>Site 5000</strong>, <strong>Site 6000</strong> and <strong>Site 7000</strong> have been configured to participate in the <strong>SECONDARY-REGION (3)</strong>. However there is no controller for secondary region yet. In this step, you will configure <strong>Controller-3 (1.1.1.5)</strong> for secondary region.  </p>
+<h3 id="step-6-make-controller-3-secondary-region-aware-and-validate"><strong>Step 6: Make Controller-3 Secondary Region-aware and Validate</strong></h3>
+<p>Sites <strong>Site 5000</strong>, <strong>Site 6000</strong> and <strong>Site 7000</strong> have been configured to participate in the <strong>SECONDARY-REGION (3)</strong>. However there is no controller for secondary region yet.  </p>
+<p>In this step, you will configure <strong>Controller-3 (1.1.1.5)</strong> for secondary region.  </p>
 <ul>
 <li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong> and look up for the <strong>CONTROLLER-3_SYSTEM_FT</strong> feature template and edit it.</li>
 </ul>
@@ -978,23 +979,14 @@
 <p>As you can see the output from simulated flow, there are multiple paths available from site 5000 to site 6000. You can try different IPs in site 6000 and or site 7000 and see what is the output.  </p>
 </li>
 <li>
-<p>We can confirm this from CLI.  </p>
+<p>We can also confirm this from CLI.  </p>
 </li>
 <li>Go to the mRemoteNG client and SSH into the <strong>EDGE-BRANCH-5-01</strong> and then issue the command <strong>show ip route vrf 10</strong>.</li>
 </ul>
 <p><img alt="" src="../pic/task7-9-4.png" /></p>
 <ul>
-<li>
-<p>As we can see from the output, all prefixes from the <strong>East Region</strong> have <strong>3 TLOCs IP</strong> pointing to, two being through the <strong>West Border routers</strong>, and one being the <strong>Originator TLOC IP</strong> for the direct path.  </p>
-</li>
-<li>
-<p>Switch back to the Ubuntu <strong>Site-5000-VPN-10-Ubun</strong> host; run trace to host <strong>10.60.1.101</strong> that lives in <strong>Site 6000</strong>  </p>
-</li>
+<li>As we can see from the output, all prefixes from the <strong>East Region</strong> have <strong>3 TLOCs IP</strong> pointing to, two being through the <strong>West Border routers</strong>, and one being the <strong>Originator TLOC IP</strong> for the direct path.  </li>
 </ul>
-<div class="highlight"><pre><span></span><code>traceroute 10.60.1.101
-</code></pre></div>
-<p><img alt="" src="../pic/task7-9-5.png" /></p>
-<p>This time we can see that this flow goes through the Core, however because the ECMP hash, it could go as well through the direct path.</p>
 
 
 

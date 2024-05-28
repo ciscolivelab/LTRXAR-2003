@@ -653,7 +653,8 @@
                   
 
 
-<p>Now that you have all Edge and Border peered with regional controllers, and completed the MRF migration. In this task you will clean up the temporary policy and migration mode.  </p>
+<p>Now that you have all Edge Routers and Border Routers peered with regional controllers, and completed the MRF migration. In this task you will clean up the temporary policy and disable migration mode.  </p>
+<p>After all devices are moved to MRF, the flat/default controller can be re-purposed to other region. In this lab, you will re-purpose Controller-4 to region 0's controller.  </p>
 <h3 id="step-1-remove-route-map"><strong>Step 1: Remove route-map</strong></h3>
 <ul>
 <li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_HUB_VPN-10_BGP_FT</strong> and edit to remove route-map you completed in task 4.  </li>
@@ -730,7 +731,7 @@
 <p>After disable migration mode on all border and Edge devices, the default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> is no longer peering with any device. In this step, you will re-purpose reposition this controller to the Core region for redundancy.  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is optional task.</p>
+<p>This is an optional task.</p>
 </div>
 <ul>
 <li>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>, look up for the device template of controller for core region <strong>CONTROLLER-3_DT</strong> and <strong>Attach Devices</strong>.  </li>
@@ -760,8 +761,12 @@
 </ul>
 <p><img alt="" src="../pic/task6-4-1.png" />  </p>
 <ul>
-<li>Shutdown on all Hubs the service VPN 10 interfaces that were used for the BGP core, this will cause now to use the Fabric we created at the Core with the Private1 TLOCs.  </li>
-<li>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>; look up for <strong>cEDGE_SITE-201_DT</strong> device template and now click on <strong>Change Device Values</strong>.  </li>
+<li>
+<p>You can remove the BGP core by shutting down the service VPN 10 interfaces on all Hubs that were used for the BGP core. This ensures the inter-region communication uses the Fabric we created at the Core with the Private1 TLOCs.  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>; look up for <strong>cEDGE_SITE-201_DT</strong> device template and now click on <strong>Change Device Values</strong>.  </p>
+</li>
 </ul>
 <p><img alt="" src="../pic/task6-4-2.png" />  </p>
 <ul>
